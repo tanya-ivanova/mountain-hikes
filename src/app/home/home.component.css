@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+section.home {
+    position: relative;
+}
+
+.img-wrapper {
+    background-image: url(https://images.squarespace-cdn.com/content/v1/5c7be58cb7c92c5aeea73009/1594553902502-E4QM8F028JG9UXO3ZAJK/IMG_7519.jpg), linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3));
+    background-position: center;
+    background-size: cover;
+    background-blend-mode: overlay;
+    height: 80vh;
+}
+
+.site-description {
+    color: white;
+    width: 30%;
+    position: absolute;    
+    top: 250px;
+    left: 350px;
+}
+
+.site-description h2 {
+    font-size: 34px;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 2px;
+}

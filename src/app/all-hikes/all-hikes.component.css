@@ -1,0 +1,12 @@
+section.all-hikes {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+section.all-hikes .hikes-container {
+    width: 90%;
+    display: flex;
+    gap: 50px;
+}

@@ -1,0 +1,76 @@
+section.hike-details {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 100px auto; 
+    align-items: center;   
+}
+
+.main-container {
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.image-container {
+    flex-basis: 40%;
+}
+
+.content-container {
+    flex-basis: 50%;
+}
+
+.content-container h2 {
+    font-size: 28px;
+    color: #0097DC;
+}
+
+.content-container h3 {
+    font-size: 22px;
+    color: #0B9ABD;
+    margin-bottom: 10px;
+}
+
+.content-container p.duration {
+    font-size: 18px;
+    color: #31C5C5;
+}
+
+.divider {
+    height: 2px;
+    background-color: #F27756; 
+    margin-top: 5px;
+    margin-bottom: 5px;   
+}
+
+.content-container p.post-author {
+    text-align: right;
+    color: #F27756;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.content-container p.description {
+    color: #4C3868;
+}
+
+.buttons-container button {
+    background-color: #0050C3;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    font-size: 20px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.buttons-container button:hover {
+    background-color: #8FDFD3;
+    color: #4C3868;
+    cursor: pointer;
+    border: 0.5px solid #0050C3;
+}
+
+.buttons-container .btn-edit {
+    margin-right: 20px;
+}

@@ -1,0 +1,79 @@
+section.create-post {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+form {
+    border: 5px solid #F27756;
+    padding: 50px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+form .inputs {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+form .left-inputs,
+form .right-inputs {
+    min-width: 400px;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+}
+
+form h2 {
+    color: #0097DC;
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+form label {
+    color: #0B9ABD;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+form div > input {
+    padding: 10px;
+    border: 1px solid #4C3868;
+    border-radius: 6px;
+    margin-bottom: 30px;
+}
+
+form div > textarea {
+    border: 1px solid #4C3868;
+    border-radius: 6px;
+    margin-bottom: 30px;
+}
+
+form > div {
+    margin-bottom: 50px;
+}
+
+form > input {    
+    align-self: center;
+    background-color: #0050C3;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    font-size: 20px;
+    border-radius: 8px; 
+    border: 0.5px solid white;   
+}
+
+form > input:hover {
+    background-color: #8FDFD3;
+    color: #4C3868;
+    cursor: pointer;
+    border: 0.5px solid #0050C3;
+}

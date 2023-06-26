@@ -1,0 +1,42 @@
+section.site-header {
+    height: 10vh;
+    background-color: #F27756;
+    color: white;
+    display: flex;
+    flex-direction: row;       
+}
+
+header {
+    display: flex;
+    flex: 1 0 100%;   
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;    
+}
+
+header h1 {
+    font-size: 40px;
+}
+
+header h1 a {
+    text-decoration: none;
+    color: white;
+}
+
+header ul {
+    display: flex;
+    gap: 30px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+header a {
+    text-decoration: none;
+    color: white;
+}
+
+header li:hover,
+header a:hover {
+    color: #0050C3;
+    cursor: pointer;
+}
