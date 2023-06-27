@@ -12,6 +12,7 @@ import { HikeDetailsComponent } from './hike-details/hike-details.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { CreatePostComponent } from './create-post/create-post.component';
+import { GalleryComponent } from './gallery/gallery.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CreatePostComponent } from './create-post/create-post.component';
     HikeDetailsComponent,
     RegisterComponent,
     LoginComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,
