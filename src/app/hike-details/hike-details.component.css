@@ -1,76 +1,101 @@
 section.hike-details {
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-    margin: 100px auto; 
-    align-items: center;   
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin: 100px auto;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
 }
 
 .main-container {
-    margin-bottom: 50px;
-    display: flex;
-    justify-content: space-between;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
 }
 
-.image-container {
-    flex-basis: 40%;
+.images {
+  flex-basis: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.images .btn-view-gallery {
+  margin: 30px;
+  background-color: #F27756;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  font-size: 20px;
+  border-radius: 8px;
+}
+
+.images .btn-view-gallery:hover {
+    cursor: pointer;
+    background-color: #EFCB8C;
+    color: #4C3868;
 }
 
 .content-container {
-    flex-basis: 50%;
+  flex-basis: 50%;
 }
 
 .content-container h2 {
-    font-size: 28px;
-    color: #0097DC;
+  font-size: 28px;
+  color: #0097dc;
 }
 
 .content-container h3 {
-    font-size: 22px;
-    color: #0B9ABD;
-    margin-bottom: 10px;
+  font-size: 22px;
+  color: #0b9abd;
+  margin-bottom: 10px;
 }
 
 .content-container p.duration {
-    font-size: 18px;
-    color: #31C5C5;
+  font-size: 18px;
+  color: #31c5c5;
 }
 
 .divider {
-    height: 2px;
-    background-color: #F27756; 
-    margin-top: 5px;
-    margin-bottom: 5px;   
+  height: 2px;
+  background-color: #f27756;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .content-container p.post-author {
-    text-align: right;
-    color: #F27756;
-    font-size: 18px;
-    margin-bottom: 20px;
+  text-align: right;
+  color: #f27756;
+  font-size: 18px;
+  margin-bottom: 20px;
 }
 
 .content-container p.description {
-    color: #4C3868;
+  color: #4c3868;
 }
 
-.buttons-container button {
-    background-color: #0050C3;
-    color: white;
-    border: none;
-    padding: 10px 30px;
-    font-size: 20px;
-    border-radius: 8px;
-    display: inline-block;
+.buttons-container button,
+.buttons-container a {
+  background-color: #0050c3;
+  color: white;
+  border: 1px solid white;
+  padding: 10px 30px;
+  font-size: 20px;
+  border-radius: 8px;
+  display: inline-block;
 }
 
-.buttons-container button:hover {
-    background-color: #8FDFD3;
-    color: #4C3868;
-    cursor: pointer;
-    border: 0.5px solid #0050C3;
+.buttons-container button:hover,
+.buttons-container a:hover {
+  background-color: #8fdfd3;
+  color: #4c3868;
+  cursor: pointer;
+  border: 0.5px solid #0050c3;
 }
 
 .buttons-container .btn-edit {
-    margin-right: 20px;
+  margin-right: 20px;
 }

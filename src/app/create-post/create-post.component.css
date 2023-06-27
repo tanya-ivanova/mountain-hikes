@@ -60,6 +60,16 @@ form > div {
     margin-bottom: 50px;
 }
 
+form div.upload-photos input {
+    border: none;
+    margin-bottom: 10px;
+    color: #4C3868;
+}
+
+form div.upload-photos p {
+    color: #4C3868;
+}
+
 form > input {    
     align-self: center;
     background-color: #0050C3;
