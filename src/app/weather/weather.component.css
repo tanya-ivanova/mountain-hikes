@@ -23,6 +23,7 @@
 .weather h3 {
   font-size: 22px;
   color: #0b9abd;  
+  text-decoration: underline;
 }
 
 .current-weather h3 {

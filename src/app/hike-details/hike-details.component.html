@@ -2,7 +2,7 @@
 
   <app-weather [currentWeather]="currentWeather" [forecastWeather]="forecastWeather" />
   <div class="main-container">
-    <div class="images">
+    <div class="image-map-section">
       <div class="image-container">
         <img
           src="https://huttohuthikingdolomites.com/wp-content/uploads/Hiking-Cinque-Torri.jpg"
@@ -10,6 +10,7 @@
         />
       </div>
       <a href="#" class="btn-view-gallery">View Gallery</a>
+      <div id="map"></div>
     </div>
 
     <div class="content-container">
@@ -37,11 +38,10 @@
         consequatur rem libero tenetur sequi perspiciatis perferendis maiores, a
         molestiae.
       </p>
+      <div class="buttons-container">
+        <a href="#" class="btn-edit">Edit</a>
+        <button class="btn-delete">Delete</button>
+      </div>
     </div>
-  </div>
-
-  <div class="buttons-container">
-    <a href="#" class="btn-edit">Edit</a>
-    <button class="btn-delete">Delete</button>
-  </div>
+  </div>  
 </section>
