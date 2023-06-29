@@ -18,6 +18,7 @@ import { PostService } from './post.service';
 import { WeatherService } from './weather.service';
 import { WeatherComponent } from './weather/weather.component';
 import { WeatherForecastDayComponent } from './weather-forecast-day/weather-forecast-day.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { WeatherForecastDayComponent } from './weather-forecast-day/weather-fore
     CreatePostComponent,
     GalleryComponent,
     WeatherComponent,
-    WeatherForecastDayComponent
+    WeatherForecastDayComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

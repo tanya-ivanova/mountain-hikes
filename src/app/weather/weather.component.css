@@ -10,14 +10,14 @@
 .weather h2 {
   font-size: 28px;
   color: #0097dc;
-  margin-bottom: 16px;
+  margin-bottom: 50px;
   text-align: center;
 }
 
 .wrapper {
   display: flex;
   justify-content: space-between;
-  gap: 160px;
+  gap: 200px;
 }
 
 .weather h3 {
@@ -51,5 +51,5 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 30px;
+    gap: 50px;
 }
