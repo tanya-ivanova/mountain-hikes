@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Post } from '../types/Post';
 
 @Component({
   selector: 'app-hike',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./hike.component.css']
 })
 export class HikeComponent {
-
+  @Input() post: Post = {
+    name: '',
+    mountain: '',
+    country: '',
+    duration: '',
+    description: '',
+    photos: [],
+    _id: ''
+  };
 }

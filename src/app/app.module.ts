@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,10 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { GalleryComponent } from './gallery/gallery.component';
+import { PostService } from './post.service';
+import { WeatherService } from './weather.service';
+import { WeatherComponent } from './weather/weather.component';
+import { WeatherForecastDayComponent } from './weather-forecast-day/weather-forecast-day.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +31,19 @@ import { GalleryComponent } from './gallery/gallery.component';
     RegisterComponent,
     LoginComponent,
     CreatePostComponent,
-    GalleryComponent
+    GalleryComponent,
+    WeatherComponent,
+    WeatherForecastDayComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    PostService,
+    WeatherService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
