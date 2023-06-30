@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../weather.service';
-import { weatherConditions } from '../weather_conditions';
 import { CurrentWeather, ForecastWeather } from '../types/Weather';
 
 @Component({

@@ -14,3 +14,8 @@ export interface ForecastWeather {
     photo: Number;
     date: String;
 };
+
+export interface Weather {
+    currentWeather: CurrentWeather;
+    forecastWeather: ForecastWeather[];
+}

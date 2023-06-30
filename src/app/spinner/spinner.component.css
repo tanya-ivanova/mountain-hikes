@@ -1,20 +1,19 @@
-.lds-spinner {
-  background-color: #8FDFD3;
+.lds-spinner {  
   color: official;
   position: relative;
   margin: auto;
-  width: 50%;
+  width: 180px;
   height: 180px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-bottom: 80px;
-  padding-right: 70px;
+  padding-right: 80px;
 }
 
 .lds-spinner div {
   transform-origin: 40px 40px;
-  animation: lds-spinner 1.2s linear infinite;
+  animation: lds-spinner 1.2s linear infinite;  
 }
 
 .lds-spinner div:after {
@@ -26,7 +25,7 @@
   width: 6px;
   height: 18px;
   border-radius: 20%;
-  background: #fff;
+  background: #F27756;
 }
 
 .lds-spinner div:nth-child(1) {
