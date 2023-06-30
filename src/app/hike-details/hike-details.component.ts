@@ -1,14 +1,12 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../weather.service';
 import { weatherConditions } from '../weather_conditions';
 import { CurrentWeather, ForecastWeather } from '../types/Weather';
-import tt from '@tomtom-international/web-sdk-maps';
 
 @Component({
   selector: 'app-hike-details',
   templateUrl: './hike-details.component.html',
   styleUrls: ['./hike-details.component.css'],
-  encapsulation: ViewEncapsulation.None
 })
 export class HikeDetailsComponent implements OnInit {
   currentWeather: CurrentWeather = {
@@ -23,16 +21,7 @@ export class HikeDetailsComponent implements OnInit {
 
   constructor (public weatherService: WeatherService) {}
 
-  ngOnInit () {
-    const map = tt.map({
-      key: 'jCcpht8Igo9gAxQI97mUdla41kQBuBL7',
-      container: 'map',
-      center: [11.85, 46.43],
-      zoom: 8
-    })
-    map.addControl(new tt.NavigationControl())
-
-    const marker = new tt.Marker().setLngLat([11.85, 46.43]).addTo(map);
+  ngOnInit () {   
     
     this.weatherService.getCurrentWeather().subscribe(weather => {    
       this.currentWeather.temp = weather.current.temp_c;

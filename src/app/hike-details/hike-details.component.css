@@ -1,5 +1,3 @@
-@import "@tomtom-international/web-sdk-maps";
-
 section.hike-details {
   display: flex;
   flex-direction: column;
@@ -19,7 +17,7 @@ a {
   gap: 50px;  
 }
 
-.image-map-section {
+.image-section {
   flex-basis: 40%;
   display: flex;
   flex-direction: column;
@@ -36,7 +34,7 @@ a {
   object-fit: cover;
 }
 
-.image-map-section .btn-view-gallery {
+.image-section .btn-view-gallery {
   margin-top: 30px;
   margin-bottom: 60px;
   background-color: #F27756;
@@ -47,15 +45,10 @@ a {
   border-radius: 8px;
 }
 
-.image-map-section .btn-view-gallery:hover {
+.image-section .btn-view-gallery:hover {
     cursor: pointer;
     background-color: #EFCB8C;
     color: #4C3868;
-}
-
-#map {
-  height: 50vh;
-  width: 40vw;
 }
 
 .content-container {
