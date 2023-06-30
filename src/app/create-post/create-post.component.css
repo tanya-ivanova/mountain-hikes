@@ -7,7 +7,7 @@ section.create-post {
 
 form {
     border: 5px solid #F27756;
-    padding: 50px;
+    padding: 50px 100px 50px 100px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;

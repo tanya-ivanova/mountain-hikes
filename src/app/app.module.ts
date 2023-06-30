@@ -19,6 +19,7 @@ import { WeatherService } from './weather.service';
 import { WeatherComponent } from './weather/weather.component';
 import { WeatherForecastDayComponent } from './weather-forecast-day/weather-forecast-day.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
     GalleryComponent,
     WeatherComponent,
     WeatherForecastDayComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

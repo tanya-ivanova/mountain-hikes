@@ -1,0 +1,38 @@
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css';
+
+section.search {
+  margin: 10px auto;
+  text-align: center;
+}
+
+.search-wrapper h2 {
+  color: #0097dc;
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.search-wrapper input {
+    width: 360px;
+    padding: 10px;
+    border: 1px solid #4C3868;
+    border-radius: 6px; 
+    margin-right: 14px;   
+}
+
+.search-wrapper button {
+    background-color: #0050C3;
+    color: white;
+    border: none;
+    padding: 9px 30px;
+    font-size: 20px;
+    border-radius: 8px; 
+    border: 0.5px solid white;
+}
+
+.search-wrapper button:hover {
+    background-color: #8FDFD3;
+    color: #4C3868;
+    cursor: pointer;
+    border: 0.5px solid #0050C3;
+}
