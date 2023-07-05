@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../weather.service';
-import { CurrentWeather, ForecastWeather } from '../types/Weather';
+import { CurrentWeather, ForecastWeather } from '../../types/Weather';
 
 @Component({
   selector: 'app-hike-details',

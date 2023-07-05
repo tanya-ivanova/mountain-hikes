@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Post } from '../types/Post';
+import { Post } from '../../types/Post';
 
 @Component({
   selector: 'app-hike',

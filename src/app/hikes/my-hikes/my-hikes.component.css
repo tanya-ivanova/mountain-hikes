@@ -1,20 +1,26 @@
-section.all-hikes {
+section.my-hikes {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 100px auto;
 }
 
-section.all-hikes h2 {
+section.my-hikes h2 {
     font-size: 40px;
     color: #0050C3;
     margin-bottom: 50px;
 }
 
-section.all-hikes .hikes-container {
+section.my-hikes .hikes-container {
     width: 90%;
     display: flex;
     gap: 50px;
     justify-content: space-evenly;
     flex-wrap: wrap;
+}
+
+.no-posts {
+    color: #4C3868;
+    font-size: 26px;
+    font-weight: bold;
 }
