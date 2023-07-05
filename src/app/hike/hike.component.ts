@@ -14,6 +14,7 @@ export class HikeComponent {
     duration: '',
     description: '',
     photos: [],
-    _id: ''
+    _id: '',
+    likes: []
   };
 }

@@ -37,7 +37,6 @@ header a {
 
 header li:hover,
 header a:hover {
-    color: #EFCB8C;
-    cursor: pointer;
-    text-decoration: underline;
+    color: #8FDFD3;
+    cursor: pointer;          
 }

@@ -1,0 +1,42 @@
+section.comments-section {
+    border: 5px solid #F27756;
+    padding: 50px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+    margin: 50px auto;
+}
+
+section.comments-section h2 {
+    font-size: 28px;
+    font-weight: normal;
+    color: #0097DC;
+    margin-bottom: 30px;
+}
+
+app-add-comment {
+    width: 70%;
+}
+
+.comment {
+    width: 70%;
+    margin-bottom: 50px;
+}
+
+.comment p.comment-content {
+    color: #4C3868;
+}
+
+.divider {
+    height: 2px;
+    background-color: #f27756;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.comment p.post-author {
+    text-align: right;
+    color: #f27756;
+    font-size: 18px;    
+}

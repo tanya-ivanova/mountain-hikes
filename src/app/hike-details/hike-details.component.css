@@ -1,47 +1,47 @@
 section.hike-details {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  margin: 100px auto;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 100px auto;
+    align-items: center;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .main-container {
-  margin-bottom: 50px;
-  display: flex;
-  justify-content: space-around;  
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-around;
 }
 
 .image-section {
-  flex-basis: 40%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    flex-basis: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .image-container {
-  width: 80%;
+    width: 80%;
 }
 
 .image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .image-section .btn-view-gallery {
-  margin-top: 50px;
-  margin-bottom: 60px;
-  background-color: #F27756;
-  color: white;
-  border: none;
-  padding: 10px 30px;
-  font-size: 20px;
-  border-radius: 8px;
+    margin-top: 50px;
+    margin-bottom: 60px;
+    background-color: #F27756;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    font-size: 20px;
+    border-radius: 8px;
 }
 
 .image-section .btn-view-gallery:hover {
@@ -51,75 +51,99 @@ a {
 }
 
 .content-container {
-  flex-basis: 50%;
-  display: flex;
-  flex-direction: column;
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
 }
 
 .content-container h2 {
-  font-size: 28px;
-  color: #0097dc;
+    font-size: 28px;
+    color: #0097dc;
 }
 
 .content-container h3 {
-  font-size: 22px;
-  color: #0b9abd;
-  margin-bottom: 10px;
+    font-size: 22px;
+    color: #0b9abd;
+    margin-bottom: 10px;
 }
 
 .content-container p.duration {
-  font-size: 18px;
-  color: #31c5c5;
-  margin-bottom: 6px;
+    font-size: 18px;
+    color: #31c5c5;
+    margin-bottom: 6px;
 }
 
 .content-container p.location {
-  font-size: 18px;
-  color: #4C3868;  
+    font-size: 18px;
+    color: #4C3868;
 }
 
 .divider {
-  height: 2px;
-  background-color: #f27756;
-  margin-top: 5px;
-  margin-bottom: 5px;
+    height: 2px;
+    background-color: #f27756;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.content-container .after-divider {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .content-container p.post-author {
-  text-align: right;
-  color: #f27756;
-  font-size: 18px;
-  margin-bottom: 20px;
+    text-align: right;
+    color: #f27756;
+    font-size: 18px;    
 }
 
 .content-container p.description {
-  color: #4c3868;
+    color: #4c3868;
 }
 
 .buttons-container {
-  align-self: flex-end;
-  margin-top: 50px;
+    align-self: flex-end;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.buttons-container p {
+    color: #4C3868;
+    font-size: 20px;
 }
 
 .buttons-container button,
 .buttons-container a {
-  background-color: #0050c3;
-  color: white;
-  border: 1px solid white;
-  padding: 10px 30px;
-  font-size: 20px;
-  border-radius: 8px;
-  display: inline-block;
+    background-color: #0050c3;
+    color: white;
+    border: 1px solid white;
+    padding: 10px 30px;
+    font-size: 20px;
+    border-radius: 8px;
+    display: inline-block;
 }
 
 .buttons-container button:hover,
 .buttons-container a:hover {
-  background-color: #8fdfd3;
-  color: #4c3868;
-  cursor: pointer;
-  border: 0.5px solid #0050c3;
+    background-color: #8fdfd3;
+    color: #4c3868;
+    cursor: pointer;
+    border: 0.5px solid #0050c3;
 }
 
 .buttons-container .btn-edit {
-  margin-right: 20px;
+    margin-right: 20px;
+}
+
+.buttons-container .btn-like {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+app-comments {
+    width: 60%;
 }

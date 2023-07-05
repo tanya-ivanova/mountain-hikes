@@ -17,6 +17,11 @@ import { SearchComponent } from './search/search.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
+import { LikesComponent } from './likes/likes.component';
+import { EditPostComponent } from './edit-post/edit-post.component';
+import { CommentsComponent } from './comments/comments.component';
+import { AddCommentComponent } from './add-comment/add-comment.component';
+import { MyHikesComponent } from './my-hikes/my-hikes.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,8 @@ import { AuthModule } from './auth/auth.module';
     GalleryComponent,
     WeatherComponent,
     WeatherForecastDayComponent,    
-    SearchComponent
+    SearchComponent, 
+    LikesComponent, EditPostComponent, CommentsComponent, AddCommentComponent, MyHikesComponent,
   ],
   imports: [
     CoreModule,

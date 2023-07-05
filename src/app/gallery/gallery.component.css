@@ -32,11 +32,17 @@ section.gallery {
   margin-bottom: 5px;
 }
 
+.content-container .after-divider {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;  
+}
+
 .content-container p.post-author {
   text-align: right;
   color: #f27756;
-  font-size: 18px;
-  margin-bottom: 20px;
+  font-size: 18px;    
 }
 
 .photos-container {

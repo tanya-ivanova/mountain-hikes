@@ -12,4 +12,8 @@ export class PostService {
   getAllPosts() {    
     return this.http.get<Post[]>('https://api-express-server.onrender.com/data/posts');
   }
+
+  getPostsByUserId() {
+    return this.http.get<Post[]>('https://api-express-server.onrender.com/data/posts?where=_ownerId%3D%2264a2f917bd8a0a1944d70d8e%22');
+  }
 }

@@ -15,7 +15,8 @@ export class AllHikesComponent implements OnInit {
 
   ngOnInit() {    
     this.postService.getAllPosts()
-      .subscribe(posts => {        
+      .subscribe(posts => { 
+        console.log(posts);       
         this.posts = posts;
         this.isLoading = false;
       })

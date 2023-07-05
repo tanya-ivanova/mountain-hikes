@@ -8,6 +8,12 @@
         <h3>{{post.mountain}} - {{post.country}}</h3>
         <p class="duration">Duration: {{post.duration}}</p>
         <div class="divider"></div>
-        <p class="post-author">Posted by: tanya@gmail.com</p>
+        <div class="hike-footer">
+            <div class="likes-wrapper">
+                <i class="fa-solid fa-heart"></i>
+                <span class="number-of-likes">{{post.likes.length}}</span>
+            </div>
+            <p class="post-author">Posted by: tanya@gmail.com</p>
+        </div>
     </div>
 </article>

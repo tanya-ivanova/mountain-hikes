@@ -6,4 +6,5 @@ export interface Post {
   duration: String;
   description: String;
   photos: String[];
+  likes: String[];
 }

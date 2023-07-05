@@ -1,3 +1,5 @@
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css';
+
 article {
     flex: 1 0 30%;
     border-radius: 20px;
@@ -11,7 +13,7 @@ article {
 article:hover {
     cursor: pointer;
     transform: scale(1.05);
-    background-image: linear-gradient(rgba(143, 223, 211,0.1),rgba(143, 223, 211,0.1));
+    background-image: linear-gradient(rgba(239, 203, 140, 0.1),rgba(239, 203, 140, 0.1));
 }
 
 .image-wrapper {
@@ -56,6 +58,29 @@ article:hover {
 
 .content-container p.post-author {
     text-align: right;
-    color: #4C3868;
+    color: #f27756;
     font-size: 18px;
+}
+
+.hike-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.likes-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.likes-wrapper .number-of-likes {
+    color: #4C3868;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.hike-footer i {    
+    font-size: 28px;
+    color: #FF0130;
+    margin-right: 6px;
 }
