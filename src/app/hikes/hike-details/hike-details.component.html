@@ -17,7 +17,7 @@
             <p class="location">Coordinates: latitude {{post.latitude}}, longitude {{post.longitude}}</p>
             <div class="divider"></div>
             <div class="after-divider">
-                <app-likes />
+                <app-likes [totalLikes]="post.likes.length" />
                 <p class="post-author">Posted by: {{post._ownerId.email}}</p>
             </div>
             <p class="description">

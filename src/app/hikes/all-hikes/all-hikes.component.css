@@ -14,16 +14,6 @@ section.all-hikes h2 {
     margin-bottom: 50px;
 }
 
-section.all-hikes .hikes-container {
-    width: 90%;
-    display: flex;
-    gap: 50px;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-}
-
-.no-posts {
-    color: #4C3868;
-    font-size: 26px;
-    font-weight: bold;
+app-hikes {
+    width: 100%;
 }

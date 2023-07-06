@@ -16,6 +16,7 @@ import { PostService } from './post.service';
 import { WeatherService } from './weather.service';
 import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from '../app-routing.module';
+import { HikesComponent } from './hikes/hikes.component';
 
 
 
@@ -32,6 +33,7 @@ import { AppRoutingModule } from '../app-routing.module';
     LikesComponent,
     MyHikesComponent,
     SearchComponent,
+    HikesComponent,
   ],
   imports: [
     CommonModule,

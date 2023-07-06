@@ -1,0 +1,12 @@
+.hikes-container {
+    width: 100%;    
+    display: flex;
+    justify-content: space-evenly;    
+    flex-wrap: wrap;
+}
+
+.no-posts {
+    color: #4C3868;
+    font-size: 26px;
+    font-weight: bold;
+}
