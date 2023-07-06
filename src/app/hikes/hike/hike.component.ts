@@ -13,8 +13,13 @@ export class HikeComponent {
     country: '',
     duration: '',
     description: '',
+    latitude: '',
+    longitude: '',
     photos: [],
     _id: '',
-    likes: []
+    likes: [],
+    _ownerId: {
+      email: ''
+    },
   };
 }

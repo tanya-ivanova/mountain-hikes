@@ -1,6 +1,6 @@
 section.comments-section {
-    border: 5px solid #F27756;
-    padding: 50px;
+    border: 5px solid #FFC500;
+    padding: 50px 10px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;

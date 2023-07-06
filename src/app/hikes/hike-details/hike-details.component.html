@@ -1,44 +1,27 @@
-<section class="hike-details">
-
-    <app-weather [currentWeather]="currentWeather" [forecastWeather]="forecastWeather" />
+<section class="hike-details" *ngIf="!isLoading">
+    <app-weather [currentWeather]="currentWeather" [forecastWeather]="forecastWeather" [post]="post" />
 
     <div class="main-container">
         <div class="image-section">
             <div class="image-container">
-                <img src="https://huttohuthikingdolomites.com/wp-content/uploads/Hiking-Cinque-Torri.jpg"
+                <img src={{post.photos[0]}}
                     alt="mountain-peak" />
             </div>
-            <a href="#" class="btn-view-gallery">View Gallery</a>
+            <a [routerLink]="['/hikes', 'details', post._id, 'gallery']" class="btn-view-gallery">View Gallery</a>
         </div>
 
         <div class="content-container">
-            <h2>Peak Canin</h2>
-            <h3>Julian Alps - Slovenia</h3>
-            <p class="duration">Duration: 3 hours</p>
-            <p class="location">Coordinates: latitude 46.43, longitude 11.85</p>
+            <h2>{{post.name}}</h2>
+            <h3>{{post.mountain}} - {{post.country}}</h3>
+            <p class="duration">Duration: {{post.duration}}</p>
+            <p class="location">Coordinates: latitude {{post.latitude}}, longitude {{post.longitude}}</p>
             <div class="divider"></div>
             <div class="after-divider">
                 <app-likes />
-                <p class="post-author">Posted by: tanya@gmail.com</p>
+                <p class="post-author">Posted by: {{post._ownerId.email}}</p>
             </div>
             <p class="description">
-                <b>Hike description:</b> Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Quod exercitationem adipisci provident. Inventore
-                dignissimos corporis tempora temporibus aliquid, pariatur quae?
-                Inventore ullam quo minima error corrupti corporis sapiente, quidem at.
-                Dolores esse ullam suscipit ab numquam. A quo omnis cupiditate nam
-                illum? Sit quidem, quam aliquam necessitatibus qui voluptatibus illum,
-                obcaecati praesentium expedita dolores voluptate soluta error officia
-                officiis magnam! Deleniti dolor aspernatur consectetur quaerat, ex
-                laudantium, nemo aliquid ipsam dicta magnam vitae sunt, nisi facere
-                dignissimos doloremque nesciunt. Perspiciatis neque, libero adipisci
-                ducimus amet nisi ipsum facilis rerum in? Quia accusamus dolore in
-                quibusdam necessitatibus esse tempora. Repellat cupiditate ullam beatae
-                nihil, tenetur ipsum qui laboriosam quis sunt perspiciatis nulla numquam
-                dolorem libero explicabo quia mollitia et doloribus optio. Autem quidem
-                eius commodi officiis vitae sapiente ratione minima enim fuga
-                consequatur rem libero tenetur sequi perspiciatis perferendis maiores, a
-                molestiae.
+                <b>Hike description:</b> {{post.description}}
             </p>
             <div class="buttons-container">
                 <p>You already liked this hike!</p>
@@ -50,4 +33,8 @@
     </div>
 
     <app-comments />
+</section>
+
+<section class="hike-details" *ngIf="isLoading">
+    <app-spinner />
 </section>

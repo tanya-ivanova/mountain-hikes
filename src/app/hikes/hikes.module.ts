@@ -15,6 +15,7 @@ import { WeatherModule } from '../weather/weather.module';
 import { PostService } from './post.service';
 import { WeatherService } from './weather.service';
 import { SharedModule } from '../shared/shared.module';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 
@@ -36,6 +37,7 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     WeatherModule,
     SharedModule,    
+    AppRoutingModule,
   ],
   exports: [
     AddCommentComponent,

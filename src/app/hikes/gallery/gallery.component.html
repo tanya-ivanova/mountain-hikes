@@ -1,33 +1,22 @@
-<section class="gallery">
+<section class="gallery" *ngIf="!isLoading">
     <div class="content-container">
-        <h2>Gallery - Peak Canin</h2>
-        <h3>Julian Alps - Slovenia</h3>
-        <p class="duration">Duration: 3 hours</p>
+        <h2>Gallery - {{post.name}}</h2>
+        <h3>{{post.mountain}} - {{post.country}}</h3>
+        <p class="duration">Duration: {{post.duration}}</p>
         <div class="divider"></div>
         <div class="after-divider">
             <app-likes />
-            <p class="post-author">Posted by: tanya@gmail.com</p>
+            <p class="post-author">Posted by: {{post._ownerId.email}}</p>
         </div>
     </div>
 
     <div class="photos-container">
-        <div class="photo-container">
-            <img src="../../assets/1.jpg" alt="">
-        </div>
-        <div class="photo-container">
-            <img src="../../assets/2.jpg" alt="">
-        </div>
-        <div class="photo-container">
-            <img src="../../assets/3.jpg" alt="">
-        </div>
-        <div class="photo-container">
-            <img src="../../assets/4.jpg" alt="">
-        </div>
-        <div class="photo-container">
-            <img src="../../assets/5.jpg" alt="">
-        </div>
-        <div class="photo-container">
-            <img src="../../assets/6.jpg" alt="">
-        </div>
+        <div class="photo-container" *ngFor="let photo of post.photos">
+            <img src={{photo}} alt="mounitain-photo">
+        </div>        
     </div>
+</section>
+
+<section class="gallery" *ngIf="isLoading">
+    <app-spinner />
 </section>

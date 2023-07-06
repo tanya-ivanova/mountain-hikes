@@ -9,7 +9,7 @@ export class WeatherService {
 
   constructor (private http: HttpClient) { }
 
-  getWeather() {
-    return this.http.get<Weather>('https://api-express-server.onrender.com/weather');
+  getWeather(latitude: String, longitude: String) {
+    return this.http.get<Weather>(`https://api-express-server.onrender.com/weather?latitude=${latitude}&longitude=${longitude}`);
   }
 }

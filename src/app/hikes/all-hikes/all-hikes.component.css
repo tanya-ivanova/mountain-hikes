@@ -2,7 +2,10 @@ section.all-hikes {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 70px auto;
+    margin: 0px auto;
+    padding-top: 60px;
+    padding-bottom: 100px;
+    min-height: 80vh;
 }
 
 section.all-hikes h2 {
