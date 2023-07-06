@@ -1,8 +1,13 @@
 @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css';
 
 section.search {
-  margin: 10px auto;
-  text-align: center;
+  margin: 0px auto;
+  text-align: center;  
+  min-height: 80vh;
+}
+
+.search-wrapper {
+  padding-top: 100px;
 }
 
 .search-wrapper h2 {

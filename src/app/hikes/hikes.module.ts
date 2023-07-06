@@ -35,7 +35,7 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     WeatherModule,
-    SharedModule,
+    SharedModule,    
   ],
   exports: [
     AddCommentComponent,

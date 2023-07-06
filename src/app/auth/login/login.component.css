@@ -1,17 +1,18 @@
 section.login {
     display: flex;
-    justify-content: center;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    justify-content: center;    
+    min-height: 80vh;
+    padding-top: 100px;
 }
 
 form {
-    border: 5px solid #F27756;
+    border: 5px solid #EFCB8C;
     padding: 50px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     width: 600px;
+    height: 560px;
 }
 
 form div {
