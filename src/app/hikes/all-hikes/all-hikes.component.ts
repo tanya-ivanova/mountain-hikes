@@ -10,8 +10,9 @@ import { PostService } from '../post.service';
 export class AllHikesComponent implements OnInit {
   posts: Post[] = [];
   isLoading = true;
+  isAllHikes = true;
 
-  constructor(public postService: PostService) {}
+  constructor(private postService: PostService) {}
 
   ngOnInit() {    
     this.postService.getAllPosts()

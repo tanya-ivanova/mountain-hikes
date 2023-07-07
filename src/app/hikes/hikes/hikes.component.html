@@ -5,13 +5,12 @@
 <div class="hikes-container" *ngIf="!isLoading && posts.length > 0">        
     <app-hike 
         *ngFor="let post of posts" [post]="post"
-        [routerLink]="['/hikes', 'details', post._id]"
+        [routerLink]="['/hikes', post._id, 'details']"
     />
 </div>
 
 <div class="hikes-container" *ngIf="!isLoading && posts.length === 0">        
     <p class="no-posts" *ngIf="isAllHikes">There are no posts yet. Be the first to post your hike here!</p>
     <p class="no-posts" *ngIf="isMyHikes">You haven't posted anything yet. Go ahead and post your first hike here!</p>
-    <p class="no-posts" *ngIf="isSearchedHikes">There are no results from your search.</p>
-
+    <p class="no-posts" *ngIf="isSearchedHikes && !isInitial">There are no results from your search.</p>
 </div>

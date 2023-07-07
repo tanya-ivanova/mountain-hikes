@@ -11,7 +11,7 @@ export class MyHikesComponent implements OnInit {
     posts: Post[] = [];
     isLoading = true;
 
-    constructor(public postService: PostService) { }
+    constructor(private postService: PostService) { }
 
     ngOnInit() {
         this.postService.getPostsByUserId()

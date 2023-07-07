@@ -11,6 +11,7 @@ import { HikeDetailsResolver } from './hikes/hike-details/hike-details.resolver'
 import { AuthGuard } from './hikes/hike-details/hike-details.guard';
 import { HikeDetailsComponent } from './hikes/hike-details/hike-details.component';
 import { GalleryComponent } from './hikes/gallery/gallery.component';
+import { EditPostComponent } from './hikes/edit-post/edit-post.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', component: HomeComponent},
@@ -21,16 +22,22 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {
-    path: 'hikes/details/:id',
+    path: 'hikes/:id/details',
     resolve: {post: HikeDetailsResolver},
     canActivate: [AuthGuard],
     component: HikeDetailsComponent,
   },
   {
-    path: 'hikes/details/:id/gallery',
+    path: 'hikes/:id/gallery',
     resolve: {post: HikeDetailsResolver},
     canActivate: [AuthGuard],
     component: GalleryComponent,
+  },
+  {
+    path: 'hikes/:id/edit',
+    resolve: {post: HikeDetailsResolver},
+    canActivate: [AuthGuard],
+    component: EditPostComponent,
   },
 ];
 

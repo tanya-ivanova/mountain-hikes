@@ -17,6 +17,7 @@ import { WeatherService } from './weather.service';
 import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { HikesComponent } from './hikes/hikes.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -40,6 +41,7 @@ import { HikesComponent } from './hikes/hikes.component';
     WeatherModule,
     SharedModule,    
     AppRoutingModule,
+    FormsModule
   ],
   exports: [
     AddCommentComponent,

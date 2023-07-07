@@ -20,4 +20,8 @@ export class PostService {
   getById(id: string) {
     return this.http.get<Post>(`https://api-express-server.onrender.com/data/posts/${id}`);
   }
+
+  search(searchValue: string) {
+    return this.http.get<Post[]>(`https://api-express-server.onrender.com/search?search=${searchValue}`);
+  }
 }

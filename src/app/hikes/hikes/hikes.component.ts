@@ -10,7 +10,8 @@ export class HikesComponent {
   @Input() posts: Post[] = [];
   @Input() isLoading: boolean = true;
 
-  isAllHikes: boolean = true;
-  isMyHikes: boolean = false;
-  isSearchedHikes: boolean = false;
+  @Input() isAllHikes: boolean = false;
+  @Input() isMyHikes: boolean = false;
+  @Input() isSearchedHikes: boolean = false;
+  @Input() isInitial: boolean = true;
 }
