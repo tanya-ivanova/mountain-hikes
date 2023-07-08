@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Post } from 'src/app/types/Post';
+import { Hike } from 'src/app/types/Hike';
 
 @Component({
   selector: 'app-hikes',
@@ -7,7 +7,7 @@ import { Post } from 'src/app/types/Post';
   styleUrls: ['./hikes.component.css']
 })
 export class HikesComponent {
-  @Input() posts: Post[] = [];
+  @Input() posts: Hike[] = [];
   @Input() isLoading: boolean = true;
 
   @Input() isAllHikes: boolean = false;

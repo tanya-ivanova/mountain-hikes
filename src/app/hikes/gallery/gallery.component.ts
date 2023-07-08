@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Post } from 'src/app/types/Post';
+import { Hike } from 'src/app/types/Hike';
 
 @Component({
     selector: 'app-gallery',
@@ -8,7 +8,7 @@ import { Post } from 'src/app/types/Post';
     styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
-    post: Post = {
+    post: Hike = {
         name: '',
         mountain: '',
         country: '',

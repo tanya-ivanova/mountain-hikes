@@ -3,13 +3,24 @@
         <h2>Login</h2>
         <div>
             <label for="email">Email</label>
-            <input type="text" id="email" name="email" placeholder="example@gmail.com">
+            <input 
+                type="text" 
+                id="email" 
+                name="email" 
+                placeholder="example@gmail.com"
+                #inputEmail
+            >
         </div>
         <div>
             <label for="password">Password</label>
-            <input type="password" id="password" name="password">
+            <input 
+                type="password" 
+                id="password" 
+                name="password"
+                #inputPassword
+            >
         </div>        
 
-        <input type="submit" value="Login">
+        <input type="submit" value="Login" (click)="login(inputEmail.value, inputPassword.value)">
     </form>
 </section>

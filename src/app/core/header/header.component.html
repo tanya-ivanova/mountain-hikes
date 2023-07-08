@@ -1,19 +1,24 @@
 <section class="site-header">
-  <header>
-    <div class="site-title">
-      <h1><a routerLink="/">Our Summits</a></h1>
-    </div>
+    <header>
+        <div class="site-title">
+            <h1><a routerLink="/">Our Summits</a></h1>
+        </div>
 
-    <nav>
-      <ul role="list">
-        <li><a routerLink="/hikes">All hikes</a></li>
-        <li><a routerLink="/my-hikes">My hikes</a></li>
-        <li><a routerLink="/create-post">Post</a></li>
-        <li><a routerLink="/search">Search</a></li>
-        <li><a routerLink="/login">Login</a></li>
-        <li><a routerLink="/register">Register</a></li>
-        <li>Logout</li>
-      </ul>
-    </nav>
-  </header>
+        <nav>
+            <ul role="list" *ngIf="!isLogged">
+                <li><a routerLink="/hikes">All hikes</a></li>
+                <li><a routerLink="/login">Login</a></li>
+                <li><a routerLink="/register">Register</a></li>                
+            </ul>
+
+            <ul role="list" *ngIf="isLogged">
+                <li class="welcome">Welcome, {{email}}</li>
+                <li><a routerLink="/hikes">All hikes</a></li>
+                <li><a routerLink="/my-hikes">My hikes</a></li>
+                <li><a routerLink="/create-post">Post</a></li>
+                <li><a routerLink="/search">Search</a></li>
+                <li (click)="logout()"><a>Logout</a></li>
+            </ul>
+        </nav>
+    </header>
 </section>

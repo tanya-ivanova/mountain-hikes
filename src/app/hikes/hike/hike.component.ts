@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Post } from '../../types/Post';
+import { Hike } from '../../types/Hike';
 
 @Component({
   selector: 'app-hike',
@@ -7,7 +7,7 @@ import { Post } from '../../types/Post';
   styleUrls: ['./hike.component.css']
 })
 export class HikeComponent {
-  @Input() post: Post = {
+  @Input() post: Hike = {
     name: '',
     mountain: '',
     country: '',

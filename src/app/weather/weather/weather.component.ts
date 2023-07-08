@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CurrentWeather, ForecastWeather } from '../../types/Weather';
-import { Post } from 'src/app/types/Post';
+import { Hike } from 'src/app/types/Hike';
 
 @Component({
     selector: 'app-weather',
@@ -18,7 +18,7 @@ export class WeatherComponent {
 
     @Input() forecastWeather: ForecastWeather[] = [];
 
-    @Input() post: Post = {
+    @Input() post: Hike = {
         name: '',
         mountain: '',
         country: '',

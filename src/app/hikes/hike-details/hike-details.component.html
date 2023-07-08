@@ -7,7 +7,13 @@
                 <img src={{post.photos[0]}}
                     alt="mountain-peak" />
             </div>
-            <a [routerLink]="['/hikes', post._id, 'gallery']" class="btn-view-gallery">View Gallery</a>
+            <a 
+                [routerLink]="['/hikes', post._id, 'gallery']" 
+                class="btn-view-gallery"
+                *ngIf="isLogged"
+            >
+                View Gallery
+            </a>
         </div>
 
         <div class="content-container">
@@ -23,7 +29,7 @@
             <p class="description">
                 <b>Hike description:</b> {{post.description}}
             </p>
-            <div class="buttons-container">
+            <div class="buttons-container" *ngIf="isLogged">
                 <p>You already liked this hike!</p>
                 <button class="btn-like"><span>Like</span><i class="fa-solid fa-heart"></i></button>
                 <a [routerLink]="['/hikes', post._id, 'edit']" class="btn-edit">Edit</a>

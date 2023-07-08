@@ -1,18 +1,18 @@
 export interface CurrentWeather {
-    temp: Number;
-    text: String;
-    code: Number;
-    photo: Number;
-    date: String;
+    temp: number;
+    text: string;
+    code: number;
+    photo: number;
+    date: string;
 };
 
 export interface ForecastWeather {
-    minTemp: Number;
-    maxTemp: Number;
-    text: String;
-    code: Number;
-    photo: Number;
-    date: String;
+    minTemp: number;
+    maxTemp: number;
+    text: string;
+    code: number;
+    photo: number;
+    date: string;
 };
 
 export interface Weather {

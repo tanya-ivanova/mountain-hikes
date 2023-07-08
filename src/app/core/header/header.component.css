@@ -41,3 +41,13 @@ header a:hover {
     text-decoration: underline; 
     transform: scale(1.1);         
 }
+
+header li.welcome {
+    margin-right: 70px;
+}
+
+header li.welcome:hover {
+    cursor: default;
+    text-decoration: none;
+    transform: scale(1);
+}

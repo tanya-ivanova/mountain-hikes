@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PostService } from '../post.service';
-import { Post } from '../../types/Post';
+import { HikeService } from '../hike.service';
+import { Hike } from '../../types/Hike';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -10,13 +10,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SearchComponent implements OnInit {
     searchValue = '';
-    posts: Post[] = [];
+    posts: Hike[] = [];
     isLoading = false;
     isSearchedHikes = true;
     isInitial: boolean = false;
 
     constructor(
-        private postService: PostService,
+        private hikeService: HikeService,
         private router: Router,
         private route: ActivatedRoute
     ) { }
@@ -26,7 +26,7 @@ export class SearchComponent implements OnInit {
             .subscribe((queryParams) => {
                 this.searchValue = queryParams['search'];
 
-                this.postService.search(this.searchValue)
+                this.hikeService.search(this.searchValue)
                     .subscribe(posts => {
                         this.posts = posts;
                         this.isLoading = false;

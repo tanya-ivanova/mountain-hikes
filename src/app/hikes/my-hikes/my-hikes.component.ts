@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Post } from '../../types/Post';
-import { PostService } from '../post.service';
+import { Hike } from '../../types/Hike';
+import { HikeService } from '../hike.service';
 
 @Component({
     selector: 'app-my-hikes',
@@ -8,13 +8,13 @@ import { PostService } from '../post.service';
     styleUrls: ['./my-hikes.component.css']
 })
 export class MyHikesComponent implements OnInit {
-    posts: Post[] = [];
+    posts: Hike[] = [];
     isLoading = true;
 
-    constructor(private postService: PostService) { }
+    constructor(private hikeService: HikeService) { }
 
     ngOnInit() {
-        this.postService.getPostsByUserId()
+        this.hikeService.getPostsByUserId()
             .subscribe(posts => {
                 console.log(posts);
                 this.posts = posts;

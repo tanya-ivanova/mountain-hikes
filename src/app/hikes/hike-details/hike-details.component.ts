@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../weather.service';
 import { CurrentWeather, ForecastWeather } from '../../types/Weather';
 import { ActivatedRoute } from '@angular/router';
-import { Post } from 'src/app/types/Post';
+import { Hike } from 'src/app/types/Hike';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
     selector: 'app-hike-details',
@@ -20,7 +21,7 @@ export class HikeDetailsComponent implements OnInit {
 
     forecastWeather: ForecastWeather[] = [];
 
-    post: Post = {
+    post: Hike = {
         name: '',
         mountain: '',
         country: '',
@@ -41,7 +42,12 @@ export class HikeDetailsComponent implements OnInit {
     constructor(
         private weatherService: WeatherService,
         private route: ActivatedRoute,
+        private authService: AuthService,
     ) { }
+
+    get isLogged(): boolean {
+        return this.authService.isLogged;
+    }
 
     ngOnInit() {
         this.post = this.route.snapshot.data['post'];

@@ -12,7 +12,7 @@ import { LikesComponent } from './likes/likes.component';
 import { MyHikesComponent } from './my-hikes/my-hikes.component';
 import { SearchComponent } from './search/search.component';
 import { WeatherModule } from '../weather/weather.module';
-import { PostService } from './post.service';
+import { HikeService } from './hike.service';
 import { WeatherService } from './weather.service';
 import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from '../app-routing.module';
@@ -57,7 +57,7 @@ import { FormsModule } from '@angular/forms';
     SearchComponent,
   ],
   providers: [
-    PostService,
+    HikeService,
     WeatherService,
   ]
 })
