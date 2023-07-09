@@ -8,41 +8,54 @@ import { SearchComponent } from './hikes/search/search.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { HikeDetailsResolver } from './hikes/hike-details/hike-details.resolver';
-import { AuthGuard } from './hikes/hike-details/hike-details.guard';
 import { HikeDetailsComponent } from './hikes/hike-details/hike-details.component';
 import { GalleryComponent } from './hikes/gallery/gallery.component';
 import { EditPostComponent } from './hikes/edit-post/edit-post.component';
+import { AuthActivate } from './guards/auth.activate';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', component: HomeComponent},
-  {path: 'hikes', component: AllHikesComponent},
-  {path: 'my-hikes', component: MyHikesComponent},  
-  {path: 'create-post', component: CreatePostComponent},
-  {path: 'search', component: SearchComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {
-    path: 'hikes/:id/details',
-    resolve: {post: HikeDetailsResolver},
-    canActivate: [AuthGuard],
-    component: HikeDetailsComponent,
-  },
-  {
-    path: 'hikes/:id/gallery',
-    resolve: {post: HikeDetailsResolver},
-    canActivate: [AuthGuard],
-    component: GalleryComponent,
-  },
-  {
-    path: 'hikes/:id/edit',
-    resolve: {post: HikeDetailsResolver},
-    canActivate: [AuthGuard],
-    component: EditPostComponent,
-  },
+    { path: '', pathMatch: 'full', component: HomeComponent },
+    { path: 'hikes', component: AllHikesComponent },
+    { 
+        path: 'my-hikes', 
+        component: MyHikesComponent,
+        canActivate: [AuthActivate], 
+    },
+    { 
+        path: 'create-post', 
+        component: CreatePostComponent,
+        canActivate: [AuthActivate],
+    },
+    { 
+        path: 'search', 
+        component: SearchComponent,
+        canActivate: [AuthActivate],
+    },
+    { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent },
+    {
+        path: 'hikes/:id/details',
+        resolve: { post: HikeDetailsResolver },        
+        component: HikeDetailsComponent,
+    },
+    {
+        path: 'hikes/:id/gallery',
+        resolve: { post: HikeDetailsResolver },        
+        component: GalleryComponent,
+        canActivate: [AuthActivate],
+    },
+    {
+        path: 'hikes/:id/edit',
+        resolve: { post: HikeDetailsResolver },        
+        component: EditPostComponent,
+        canActivate: [AuthActivate]
+    },
+    {path: '**', component: NotFoundComponent},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -10,10 +10,12 @@ import { AuthModule } from './auth/auth.module';
 import { WeatherModule } from './weather/weather.module';
 import { HikesModule } from './hikes/hikes.module';
 import { AuthService } from './auth.service';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NotFoundComponent,
   ],
   imports: [
     CoreModule,
