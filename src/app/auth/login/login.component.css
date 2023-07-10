@@ -12,7 +12,7 @@ form {
     display: flex;
     flex-direction: column;
     width: 600px;
-    height: 560px;
+    height: 580px;
 }
 
 form div {
@@ -41,7 +41,7 @@ form div > input {
 }
 
 form div:last-of-type {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 form div > input::placeholder {
@@ -64,4 +64,15 @@ form > input:hover {
     color: #4C3868;
     cursor: pointer;
     border: 0.5px solid #0050C3;
+}
+
+form p {
+    color: #4C3868;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+form a:active {
+    color: #4C3868;
 }

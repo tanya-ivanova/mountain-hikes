@@ -40,7 +40,7 @@ form div > input {
 }
 
 form div:last-of-type {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 form div > input::placeholder {
@@ -63,4 +63,14 @@ form > input:hover {
     color: #4C3868;
     cursor: pointer;
     border: 0.5px solid #0050C3;
+}
+
+form p {
+    color: #4C3868;
+    margin-top: 40px;    
+    font-size: 20px;
+}
+
+form a:active {
+    color: #4C3868;
 }
