@@ -33,11 +33,14 @@ export class HikeDetailsComponent implements OnInit {
         _id: '',
         likes: [],
         _ownerId: {
-            email: ''
+            _id: '',
+            email: '',
         },
     };
 
     isLoading = true;
+
+    postId = '';
 
     constructor(
         private weatherService: WeatherService,
@@ -56,6 +59,8 @@ export class HikeDetailsComponent implements OnInit {
             this.currentWeather = weather.currentWeather;
             this.forecastWeather = weather.forecastWeather;
         }); 
-        this.isLoading = false;       
+        this.isLoading = false;
+        
+        this.postId = this.route.snapshot.params['id'];
     }
 }

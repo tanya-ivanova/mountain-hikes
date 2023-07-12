@@ -1,5 +1,5 @@
 <section class="login">
-    <form action="">
+    <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
         <h2>Login</h2>
         <div>
             <label for="email">Email</label>
@@ -8,20 +8,30 @@
                 id="email" 
                 name="email" 
                 placeholder="example@gmail.com"
-                #inputEmail
+                formControlName="email"                
             >
+            <span class="error" *ngIf="!signinForm.get('email')?.valid && signinForm.get('email')?.touched">Please
+                enter a valid email!</span>
         </div>
         <div>
             <label for="password">Password</label>
             <input 
                 type="password" 
                 id="password" 
-                name="password"
-                #inputPassword
+                name="password" 
+                formControlName="password"               
             >
+            <span class="error" *ngIf="!signinForm.get('password')?.valid && signinForm.get('password')?.touched">
+                Password is required!                
+            </span>
         </div>        
 
-        <input type="submit" value="Login" (click)="login(inputEmail.value, inputPassword.value)">
+        <button 
+            type="submit" 
+            [disabled]="!signinForm.valid"
+        >
+            Login
+        </button>
         
         <p>You don't have an account? Register <a routerLink="/register">here</a></p>
     </form>

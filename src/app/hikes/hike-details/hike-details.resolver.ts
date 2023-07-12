@@ -14,8 +14,7 @@ export class HikeDetailsResolver implements Resolve<Hike> {
     resolve(
         route: ActivatedRouteSnapshot, 
         state: RouterStateSnapshot
-    ): Hike | Observable<Hike> | Promise<Hike> {
-        console.log(this.hikeService.getById(route.params['id']));
+    ): Hike | Observable<Hike> | Promise<Hike> {        
         return this.hikeService.getById(route.params['id']);
     }
 }

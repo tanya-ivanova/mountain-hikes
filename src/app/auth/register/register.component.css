@@ -47,7 +47,7 @@ form div > input::placeholder {
     color: #4C3868;
 }
 
-form > input {    
+form > button {    
     align-self: center;
     background-color: #0050C3;
     color: white;
@@ -58,11 +58,22 @@ form > input {
     border: 0.5px solid white;   
 }
 
-form > input:hover {
+form > button:hover {
     background-color: #8FDFD3;
     color: #4C3868;
     cursor: pointer;
     border: 0.5px solid #0050C3;
+}
+
+form > button:disabled {
+    background-color: lightgray;
+}
+
+form > button:disabled:hover {
+    background-color: lightgray;
+    color: white;
+    border: 0.5px solid white;
+    cursor: default;
 }
 
 form p {
@@ -73,4 +84,13 @@ form p {
 
 form a:active {
     color: #4C3868;
+}
+
+form input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+form span.error {
+    color: red;
+    margin-bottom: 30px;
 }

@@ -30,7 +30,8 @@ export class WeatherComponent {
         _id: '',
         likes: [],
         _ownerId: {
-            email: ''
+            _id: '',
+            email: '',
         },
     };
 }

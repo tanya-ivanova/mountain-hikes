@@ -1,4 +1,18 @@
-<form action="" class="add-comment">
-    <textarea name="add-comment" id="" cols="30" rows="5"></textarea>
-    <input type="submit" value="Add comment">
+<form class="add-comment" (ngSubmit)="onSubmit()" #f="ngForm">
+    <textarea 
+    name="content" 
+    id="content" 
+    cols="30" 
+    rows="5" 
+    ngModel 
+    required 
+    minlength="5"
+    #content="ngModel"></textarea>
+    <span class="error" *ngIf="!content.valid && content.touched">Comment must be at least 5 characters long!</span>
+    <button 
+        type="submit"
+        [disabled]="!f.valid"
+    >
+        Add comment
+    </button>
 </form>

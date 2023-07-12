@@ -1,20 +1,30 @@
 <section class="register">
-    <form action="">
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
         <h2>Register</h2>
         <div>
             <label for="email">Email</label>
-            <input type="text" id="email" name="email" placeholder="example@gmail.com">
+            <input type="text" id="email" name="email" placeholder="example@gmail.com" formControlName="email">
+            <span class="error" *ngIf="!signupForm.get('email')?.valid && signupForm.get('email')?.touched">Please
+                enter a valid email!</span>
         </div>
         <div>
             <label for="password">Password</label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="password" name="password" formControlName="password">
+            <span class="error" *ngIf="!signupForm.get('password')?.valid && signupForm.get('password')?.touched">
+                <span *ngIf="signupForm.get('password')?.errors?.['passwordIsInvalid']">Password must be at least 5 characters long!</span>
+                <span *ngIf="signupForm.get('password')?.errors?.['required']">Password is required!</span>                
+            </span>
         </div>
         <div>
             <label for="repass">Repeat Password</label>
-            <input type="password" id="repass" name="repass">
+            <input type="password" id="repass" name="repass" formControlName="repass">
+            <span class="error" *ngIf="!signupForm?.get('repass')?.valid && signupForm?.get('repass')?.touched">
+                <span *ngIf="signupForm.get('repass')?.errors?.['repassIsInvalid']">Passwords must match!</span>
+                <span *ngIf="signupForm.get('repass')?.errors?.['required']">Repeat password is required!</span>                
+            </span>
         </div>
 
-        <input type="submit" value="Register">
+        <button type="submit" [disabled]="!signupForm.valid">Register</button>
 
         <p>You already have an account? Login <a routerLink="/login">here</a></p>
     </form>

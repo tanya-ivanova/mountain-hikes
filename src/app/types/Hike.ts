@@ -10,6 +10,7 @@ export interface Hike {
     photos: string[];
     likes: string[];
     _ownerId: {
+        _id: string;
         email: string;
     };
 }

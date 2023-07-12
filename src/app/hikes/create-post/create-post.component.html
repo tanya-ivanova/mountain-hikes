@@ -1,46 +1,125 @@
 <section class="create-post">
-    <form action="">
+    <form (ngSubmit)="onSubmit()" #f="ngForm">
         <h2>Create post</h2>
         <div class="inputs">
             <div class="left-inputs">
                 <div>
-                    <label for="peak-name">Peak name</label>
-                    <input type="text" id="peak-name" name="peak-name">
+                    <label for="name">Peak name</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name"
+                        ngModel
+                        required
+                        minlength="3"
+                        #name="ngModel"
+                    >
+                    <span class="error" *ngIf="!name.valid && name.touched">Peak name is required and must be at least 3 characters long</span>
                 </div>
                 <div>
                     <label for="mountain">Mountain</label>
-                    <input type="text" id="mountain" name="mountain">
+                    <input 
+                        type="text" 
+                        id="mountain" 
+                        name="mountain"
+                        ngModel
+                        required
+                        minlength="3"
+                        #mountain="ngModel"
+                    >
+                    <span class="error" *ngIf="!mountain.valid && mountain.touched">Mountain is required and must be at least 3 characters long</span>
                 </div>
                 <div>
                     <label for="country">Country</label>
-                    <input type="text" id="country" name="country">
+                    <input 
+                        type="text" 
+                        id="country" 
+                        name="country"
+                        ngModel
+                        required
+                        minlength="3"
+                        #country="ngModel"
+                    >
+                    <span class="error" *ngIf="!country.valid && country.touched">Country is required and must be at least 3 characters long</span>
                 </div>
                 <div>
                     <label for="duration">Duration</label>
-                    <input type="text" id="duration" name="duration">
+                    <input 
+                        type="text" 
+                        id="duration" 
+                        name="duration"
+                        ngModel
+                        required
+                        minlength="2"
+                        #duration="ngModel"
+                    >
+                    <span class="error" *ngIf="!duration.valid && duration.touched">Duration is required and must be at least 2 characters long</span>
                 </div>
                 <div>
                     <label for="latitude">Latitude</label>
-                    <input type="number" id="latitude" name="latitude" step=".01">
+                    <input 
+                        type="number" 
+                        id="latitude" 
+                        name="latitude" 
+                        step=".01"
+                        ngModel
+                        required                        
+                        #latitude="ngModel"
+                    >
+                    <span class="error" *ngIf="!latitude.valid && latitude.touched">Latitude is required</span>
                 </div>
                 <div>
                     <label for="longitude">Longitude</label>
-                    <input type="number" id="longitude" name="longitude" step=".01">
+                    <input 
+                        type="number" 
+                        id="longitude" 
+                        name="longitude" 
+                        step=".01"
+                        ngModel  
+                        required                      
+                        #longitude="ngModel"
+                    >
+                    <span class="error" *ngIf="!longitude.valid && longitude.touched">Longitude is required</span>
                 </div>                              
             </div>
             <div class="right-inputs">
                 <div>
-                    <label for="desc">Description</label>
-                    <textarea name="desc" id="desc" cols="30" rows="15"></textarea>
+                    <label for="description">Description</label>
+                    <textarea 
+                        name="description" 
+                        id="description" 
+                        cols="30" 
+                        rows="15"
+                        ngModel
+                        required
+                        minlength="10"
+                        #description="ngModel"
+                    ></textarea>
+                    <span class="error" *ngIf="!description.valid && description.touched">Description is required and must be at least 10 characters long</span>
                 </div>
                 <div class="upload-photos">
                     <label for="photos">Upload photos</label>
-                    <input type="file" id="photos" name="photos" multiple>
+                    <input 
+                        type="file" 
+                        id="photos" 
+                        name="photos" 
+                        multiple
+                        (change)="onFilesSelected($event)"
+                        ngModel
+                        required
+                        #photos="ngModel"
+                    >
+                    <span class="error" *ngIf="!photos.valid && photos.touched">At least one photo is required</span>
                     <p>*Please upload all of your photos at once</p>
                 </div>                  
             </div>
         </div>
 
-        <input type="submit" value="Create post">
+        <button 
+            type="submit"             
+            [disabled]="!f.valid"
+        >
+            Create post
+        </button>
     </form>
 </section>

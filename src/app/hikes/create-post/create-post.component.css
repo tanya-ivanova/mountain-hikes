@@ -11,7 +11,7 @@ form {
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    
+
 }
 
 form .inputs {
@@ -43,20 +43,20 @@ form label {
     margin-bottom: 10px;
 }
 
-form div > input {
+form div>input {
     padding: 10px;
     border: 1px solid #4C3868;
     border-radius: 6px;
     margin-bottom: 30px;
 }
 
-form div > textarea {
+form div>textarea {
     border: 1px solid #4C3868;
     border-radius: 6px;
     margin-bottom: 30px;
 }
 
-form > div {
+form>div {
     margin-bottom: 50px;
 }
 
@@ -70,20 +70,44 @@ form div.upload-photos p {
     color: #4C3868;
 }
 
-form > input {    
+form > button {
     align-self: center;
     background-color: #0050C3;
     color: white;
     border: none;
     padding: 10px 30px;
     font-size: 20px;
-    border-radius: 8px; 
-    border: 0.5px solid white;   
+    border-radius: 8px;
+    border: 0.5px solid white;
 }
 
-form > input:hover {
+form > button:hover {
     background-color: #8FDFD3;
     color: #4C3868;
     cursor: pointer;
     border: 0.5px solid #0050C3;
+}
+
+form > button:disabled {
+    background-color: lightgray;
+}
+
+form > button:disabled:hover {
+    background-color: lightgray;
+    color: white;
+    border: 0.5px solid white;
+    cursor: default;
+}
+
+form input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+form textarea.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+form span.error {
+    color: red;
+    margin-bottom: 30px;
 }
