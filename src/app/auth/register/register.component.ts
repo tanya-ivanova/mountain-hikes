@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Validators, ValidatorFn, AbstractControl, ValidationErrors, FormBuilder } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-register',
@@ -26,7 +28,11 @@ export class RegisterComponent {
         ]
     });
 
-    constructor(private fb: FormBuilder) { }
+    constructor(
+        private fb: FormBuilder,
+        private authService: AuthService,
+        private router: Router,
+    ) { }
 
     passwordValidation(): ValidatorFn {
         return (control: AbstractControl): ValidationErrors | null => {
@@ -55,10 +61,17 @@ export class RegisterComponent {
     }
 
     onSubmit() {
-        console.log(this.signupForm.get('email')?.value);
-        console.log(this.signupForm.get('password')?.value);
-
+        if (!this.signupForm.valid) {
+            return;
+        }
+                
         const email = this.signupForm.get('email')?.value;
         const password = this.signupForm.get('password')?.value;
+
+        if(email && password) {
+            this.authService.register(email, password).subscribe(resData => {               
+                this.router.navigate(['/hikes']);
+            })
+        }
     }
 }

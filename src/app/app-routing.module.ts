@@ -11,8 +11,8 @@ import { HikeDetailsResolver } from './hikes/hike-details/hike-details.resolver'
 import { HikeDetailsComponent } from './hikes/hike-details/hike-details.component';
 import { GalleryComponent } from './hikes/gallery/gallery.component';
 import { EditPostComponent } from './hikes/edit-post/edit-post.component';
-import { AuthActivate } from './guards/auth.activate';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
     { path: '', pathMatch: 'full', component: HomeComponent },
@@ -20,17 +20,17 @@ const routes: Routes = [
     { 
         path: 'my-hikes', 
         component: MyHikesComponent,
-        canActivate: [AuthActivate], 
+        canActivate: [AuthGuard], 
     },
     { 
         path: 'create-post', 
         component: CreatePostComponent,
-        canActivate: [AuthActivate],
+        canActivate: [AuthGuard],
     },
     { 
         path: 'search', 
         component: SearchComponent,
-        canActivate: [AuthActivate],
+        canActivate: [AuthGuard],
     },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
@@ -43,13 +43,13 @@ const routes: Routes = [
         path: 'hikes/:id/gallery',
         resolve: { post: HikeDetailsResolver },        
         component: GalleryComponent,
-        canActivate: [AuthActivate],
+        canActivate: [AuthGuard],
     },
     {
         path: 'hikes/:id/edit',
         resolve: { post: HikeDetailsResolver },        
         component: EditPostComponent,
-        canActivate: [AuthActivate]
+        canActivate: [AuthGuard]
     },
     {path: '**', component: NotFoundComponent},
 ];

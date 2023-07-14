@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Validators, ValidatorFn, AbstractControl, ValidationErrors, FormBuilder } from '@angular/forms';
-import { AuthService } from 'src/app/auth.service';
+import { Validators, FormBuilder } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 @Component({
     selector: 'app-login',
@@ -26,21 +26,19 @@ export class LoginComponent {
         private router: Router,
         private fb: FormBuilder
     ) {}
-
-    login(email: string, password: string): void {
-        this.authService.login();
-        this.router.navigate(['/hikes']);
-    }
-
+    
     onSubmit() {
-        console.log(this.signinForm.get('email')?.value);
-        console.log(this.signinForm.get('password')?.value);
+        if (!this.signinForm.valid) {
+            return;
+        }        
 
         const email = this.signinForm.get('email')?.value;
         const password = this.signinForm.get('password')?.value;
 
         if(email && password) {
-            this.login(email, password);
+            this.authService.login(email, password).subscribe(resData => {                
+                this.router.navigate(['/hikes']);
+            })
         }        
     }
 }

@@ -9,7 +9,6 @@ import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { WeatherModule } from './weather/weather.module';
 import { HikesModule } from './hikes/hikes.module';
-import { AuthService } from './auth.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
@@ -27,9 +26,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [
-    AuthService,
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
