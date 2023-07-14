@@ -1,8 +1,10 @@
 .hikes-container {
-    width: 100%;    
-    display: flex;
-    justify-content: space-evenly;    
+    margin: 0 auto;
+    max-width: 86%;    
+    display: flex;     
     flex-wrap: wrap;
+    gap: 100px;
+    justify-content: flex-start;
 }
 
 .no-posts {

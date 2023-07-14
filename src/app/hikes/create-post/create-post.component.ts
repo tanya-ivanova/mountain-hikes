@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { storage } from 'src/firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { HikeService } from '../hike.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-create-post',
@@ -9,6 +11,11 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
     styleUrls: ['./create-post.component.css']
 })
 export class CreatePostComponent {
+    constructor(
+        private hikeService: HikeService,
+        private router: Router,
+    ) {}
+
     @ViewChild('f') form: NgForm | undefined;    
     photos: string[] = [];
     newHike: {
@@ -55,7 +62,9 @@ export class CreatePostComponent {
         this.newHike.longitude = this.form?.value.longitude;
         this.newHike.photos = this.photos;
 
-        console.log(this.newHike);
+        this.hikeService.createPost(this.newHike).subscribe(() => {
+            this.router.navigate(['/hikes']);
+        })
 
         this.form?.reset();
     }

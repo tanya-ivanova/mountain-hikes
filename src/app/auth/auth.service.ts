@@ -99,7 +99,7 @@ export class AuthService {
         accessToken: string        
     ) {        
         const user = new User(email, _id, accessToken);
-        this.user.next(user);        
+        this.user.next(user);              
         localStorage.setItem('userData', JSON.stringify(user));
     }   
 }
