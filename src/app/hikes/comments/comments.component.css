@@ -19,9 +19,13 @@ app-add-comment {
     width: 70%;
 }
 
-.comment {
+.comments {
     width: 70%;
     margin-bottom: 50px;
+}
+
+.comment:not(:last-of-type) {
+    margin-bottom: 30px;
 }
 
 .comment p.comment-content {
@@ -39,4 +43,8 @@ app-add-comment {
     text-align: right;
     color: #f27756;
     font-size: 18px;    
+}
+
+.no-comments {
+    color: #4C3868;
 }

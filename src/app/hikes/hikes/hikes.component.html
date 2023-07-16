@@ -10,7 +10,7 @@
 </div>
 
 <div class="hikes-container" *ngIf="!isLoading && posts.length === 0">        
-    <p class="no-posts" *ngIf="isAllHikes">There are no posts yet. Be the first to post your hike here!</p>
-    <p class="no-posts" *ngIf="isMyHikes">You haven't posted anything yet. Go ahead and post your first hike here!</p>
+    <p class="no-posts" *ngIf="isAllHikes">There are no posts yet. Be the first to post your hike <a routerLink="/create-post">here</a>!</p>
+    <p class="no-posts" *ngIf="isMyHikes">You haven't posted anything yet. Go ahead and post your first hike <a routerLink="/create-post">here</a>!</p>
     <p class="no-posts" *ngIf="isSearchedHikes && !isInitial">There are no results from your search.</p>
 </div>
