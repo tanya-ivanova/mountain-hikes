@@ -14,6 +14,7 @@ export class MyHikesComponent implements OnInit, OnDestroy {
     userId = '';
     posts: Hike[] = [];
     isLoading = true;
+    isMyHikes = true;
 
     constructor(
         private hikeService: HikeService,

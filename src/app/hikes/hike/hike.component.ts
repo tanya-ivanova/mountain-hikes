@@ -18,6 +18,7 @@ export class HikeComponent {
     photos: [],
     _id: '',
     likes: [],
+    comments: [],
     _ownerId: {
       _id: '',
       email: '',

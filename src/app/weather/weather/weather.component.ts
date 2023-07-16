@@ -29,6 +29,7 @@ export class WeatherComponent {
         photos: [],
         _id: '',
         likes: [],
+        comments: [],
         _ownerId: {
             _id: '',
             email: '',

@@ -1,3 +1,5 @@
+import { Comment } from "./Comment";
+
 export interface Hike {
     _id: string;
     name: string;
@@ -9,6 +11,7 @@ export interface Hike {
     longitude: string;
     photos: string[];
     likes: string[];
+    comments: Comment[];
     _ownerId: {
         _id: string;
         email: string;

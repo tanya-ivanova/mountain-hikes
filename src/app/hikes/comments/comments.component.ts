@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
+import { Comment } from 'src/app/types/Comment';
 import { Hike } from 'src/app/types/Hike';
 
 
@@ -10,11 +11,15 @@ import { Hike } from 'src/app/types/Hike';
     templateUrl: './comments.component.html',
     styleUrls: ['./comments.component.css']
 })
-export class CommentsComponent implements OnInit {
+export class CommentsComponent implements OnInit, OnChanges {
     private userSub: Subscription | undefined;
     isLogged: boolean = false;
     userId: string = '';
-    isOwner: boolean = false;
+    isOwner: boolean = false;  
+    
+    @Input() comments: Comment[] = [];
+    
+    @Output() onNewCommentAdd = new EventEmitter<boolean>;
 
     post: Hike = {
         name: '',
@@ -27,6 +32,7 @@ export class CommentsComponent implements OnInit {
         photos: [],
         _id: '',
         likes: [],
+        comments: [],
         _ownerId: {
             _id: '',
             email: '',
@@ -45,10 +51,19 @@ export class CommentsComponent implements OnInit {
         });
 
         this.post = this.route.snapshot.data['post'];
+        this.comments = this.post.comments;
 
         if(this.post._ownerId._id === this.userId) {
             this.isOwner = true;
-        }
+        }        
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        console.log(changes);
+    }
+
+    onCommentAdd(isCommentAdded: boolean) {
+        this.onNewCommentAdd.emit(isCommentAdded);
     }
 
     ngOnDestroy() {

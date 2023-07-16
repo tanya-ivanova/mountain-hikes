@@ -1,26 +1,11 @@
 <section class="comments-section">
     <h2>Comments</h2>
 
-    <app-add-comment *ngIf="isLogged && !isOwner" />
+    <app-add-comment *ngIf="isLogged && !isOwner" (onCommentAdd)="onCommentAdd($event)" />
 
-    <div class="comment">
-        <p class="comment-content">Some comment from one of the users. Some comment from one of the users. Some comment from one of the users.
-            Some comment from one of the users. Some comment from one of the users. Some comment from one of the users.
-            Some comment from one of the users.</p>
+    <div class="comment" *ngFor="let comment of comments">
+        <p class="comment-content">{{comment.content}}</p>
         <div class="divider"></div>
-        <p class="post-author">Posted by: tanya@gmail.com</p>
-    </div>
-
-    <div class="comment">
-        <p class="comment-content">Some comment from one of the users. Some comment from one of the users. Some comment from one of the users.
-        </p>
-        <div class="divider"></div>
-        <p class="post-author">Posted by: tanya@gmail.com</p>
-    </div>
-
-    <div class="comment">
-        <p class="comment-content">Some comment from one of the users</p>
-        <div class="divider"></div>
-        <p class="post-author">Posted by: tanya@gmail.com</p>
-    </div>
+        <p class="post-author">Posted by: {{comment._ownerId.email}}</p>
+    </div>    
 </section>

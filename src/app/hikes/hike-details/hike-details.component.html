@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    <app-comments />
+    <app-comments (onNewCommentAdd)="onCommentAdd($event)" [comments]="comments" />
 </section>
 
 <section class="hike-details" *ngIf="isLoading">

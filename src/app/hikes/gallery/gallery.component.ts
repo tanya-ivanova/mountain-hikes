@@ -20,6 +20,7 @@ export class GalleryComponent implements OnInit {
         photos: [],
         _id: '',
         likes: [],
+        comments: [],
         _ownerId: {
             _id: '',
             email: '',

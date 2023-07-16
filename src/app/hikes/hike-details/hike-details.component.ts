@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { WeatherService } from '../weather.service';
 import { CurrentWeather, ForecastWeather } from '../../types/Weather';
@@ -6,17 +6,20 @@ import { ActivatedRoute } from '@angular/router';
 import { Hike } from 'src/app/types/Hike';
 import { AuthService } from 'src/app/auth/auth.service';
 import { HikeService } from '../hike.service';
+import { Comment } from 'src/app/types/Comment';
 
 @Component({
     selector: 'app-hike-details',
     templateUrl: './hike-details.component.html',
     styleUrls: ['./hike-details.component.css'],
 })
-export class HikeDetailsComponent implements OnInit, OnDestroy, OnChanges {
+export class HikeDetailsComponent implements OnInit, OnDestroy {
     private userSub: Subscription | undefined;
     isLogged: boolean = false;
     userId: string = '';
     isOwner: boolean = false;
+
+    comments: Comment[] = [];
 
     currentWeather: CurrentWeather = {
         temp: 0,
@@ -39,6 +42,7 @@ export class HikeDetailsComponent implements OnInit, OnDestroy, OnChanges {
         photos: [],
         _id: '',
         likes: [],
+        comments: [],
         _ownerId: {
             _id: '',
             email: '',
@@ -66,7 +70,7 @@ export class HikeDetailsComponent implements OnInit, OnDestroy, OnChanges {
             this.userId = user._id;           
         });
 
-        this.post = this.route.snapshot.data['post'];
+        this.post = this.route.snapshot.data['post'];       
         this.totalLikes = this.post.likes.length;
         if (this.post.likes.includes(this.userId)) {
             this.hasLiked = true;
@@ -84,15 +88,19 @@ export class HikeDetailsComponent implements OnInit, OnDestroy, OnChanges {
         this.postId = this.route.snapshot.params['id'];
     }
 
-    ngOnChanges(changes: SimpleChanges): void {
-        console.log(changes);
-    }
-
     onLike() {
         this.hikeService.like(this.postId).subscribe(() => {
             this.hasLiked = true;
             this.totalLikes++;
         });
+    }
+
+    onCommentAdd(isCommentAdded: boolean) {
+        if(isCommentAdded) {
+            this.hikeService.getById(this.postId).subscribe(hike => {
+                this.comments = hike.comments;               
+            })
+        }
     }
 
     ngOnDestroy() {

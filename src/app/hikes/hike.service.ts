@@ -38,6 +38,12 @@ export class HikeService {
         return this.http.post(`https://api-express-server.onrender.com/data/posts/${postId}/likes`, {});
     }
 
+    comment(postId: string, newComment: string) {
+        return this.http.post(`https://api-express-server.onrender.com/data/posts/${postId}/comments`, {
+            content: newComment
+        });
+    }
+
     search(searchValue: string) {
         return this.http.get<Hike[]>(`https://api-express-server.onrender.com/search?search=${searchValue}`);
     }
