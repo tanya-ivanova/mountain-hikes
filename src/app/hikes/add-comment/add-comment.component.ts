@@ -19,6 +19,10 @@ export class AddCommentComponent implements OnInit {
     }
 
     onSubmit() {
+        if (!this.form?.valid) {
+            return;
+        }
+        
         this.newComment = this.form?.value.content;        
     }
 }

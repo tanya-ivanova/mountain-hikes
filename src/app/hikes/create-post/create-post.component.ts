@@ -52,7 +52,11 @@ export class CreatePostComponent {
         }
     }
 
-    onSubmit() {      
+    onSubmit() {
+        if (!this.form?.valid) {
+            return;
+        } 
+
         this.newHike.name = this.form?.value.name;
         this.newHike.mountain = this.form?.value.mountain;
         this.newHike.country = this.form?.value.country;

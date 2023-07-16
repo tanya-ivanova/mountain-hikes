@@ -23,17 +23,17 @@
             <p class="location">Coordinates: latitude {{post.latitude}}, longitude {{post.longitude}}</p>
             <div class="divider"></div>
             <div class="after-divider">
-                <app-likes [totalLikes]="post.likes.length" />
+                <app-likes [totalLikes]="totalLikes" />
                 <p class="post-author">Posted by: {{post._ownerId.email}}</p>
             </div>
             <p class="description">
                 <b>Hike description:</b> {{post.description}}
             </p>
             <div class="buttons-container" *ngIf="isLogged">
-                <p>You already liked this hike!</p>
-                <button class="btn-like"><span>Like</span><i class="fa-solid fa-heart"></i></button>
-                <a [routerLink]="['/hikes', post._id, 'edit']" class="btn-edit">Edit</a>
-                <button class="btn-delete">Delete</button>
+                <p *ngIf="hasLiked && !isOwner">You already liked this hike!</p>
+                <button *ngIf="!hasLiked && !isOwner" class="btn-like" (click)="onLike()"><span>Like</span><i class="fa-solid fa-heart"></i></button>
+                <a *ngIf="isOwner" [routerLink]="['/hikes', post._id, 'edit']" class="btn-edit">Edit</a>
+                <button *ngIf="isOwner" class="btn-delete">Delete</button>
             </div>
         </div>
     </div>

@@ -5,7 +5,7 @@
         <p class="duration">Duration: {{post.duration}}</p>
         <div class="divider"></div>
         <div class="after-divider">
-            <app-likes />
+            <app-likes [totalLikes]="post.likes.length" />
             <p class="post-author">Posted by: {{post._ownerId.email}}</p>
         </div>
     </div>

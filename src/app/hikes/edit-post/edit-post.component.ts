@@ -35,7 +35,11 @@ export class EditPostComponent implements OnInit {
         this.postId = this.route.snapshot.params['id'];
     }
 
-    onSubmit() {      
+    onSubmit() { 
+        if (!this.form?.valid) {
+            return;
+        }
+             
         this.updatedHike.name = this.form?.value.name;
         this.updatedHike.mountain = this.form?.value.mountain;
         this.updatedHike.country = this.form?.value.country;

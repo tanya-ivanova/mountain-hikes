@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Hike } from 'src/app/types/Hike';
+import { HikeService } from '../hike.service';
 
 @Component({
     selector: 'app-gallery',
@@ -25,12 +26,22 @@ export class GalleryComponent implements OnInit {
         },
     };
 
+    postId: string = '';
+
     isLoading = true;
 
-    constructor(private route: ActivatedRoute) {}
+    constructor(
+        private route: ActivatedRoute,
+        private hikeService: HikeService,
+    ) {}
 
     ngOnInit() {
-        this.post = this.route.snapshot.data['post'];         
-        this.isLoading = false;       
+        //this.post = this.route.snapshot.data['post'];
+        this.postId = this.route.snapshot.params['id'];
+
+        this.hikeService.getById(this.postId).subscribe((response) => {
+            this.post = response;
+            this.isLoading = false;
+        });       
     }
 }

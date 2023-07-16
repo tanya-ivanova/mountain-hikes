@@ -1,7 +1,7 @@
 <section class="comments-section">
     <h2>Comments</h2>
 
-    <app-add-comment *ngIf="isLogged" />
+    <app-add-comment *ngIf="isLogged && !isOwner" />
 
     <div class="comment">
         <p class="comment-content">Some comment from one of the users. Some comment from one of the users. Some comment from one of the users.
