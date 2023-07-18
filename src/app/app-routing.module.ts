@@ -13,6 +13,7 @@ import { GalleryComponent } from './hikes/gallery/gallery.component';
 import { EditPostComponent } from './hikes/edit-post/edit-post.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './auth/auth.guard';
+import { DeletePostComponent } from './hikes/delete-post/delete-post.component';
 
 const routes: Routes = [
     { path: '', pathMatch: 'full', component: HomeComponent },
@@ -49,6 +50,12 @@ const routes: Routes = [
         path: 'hikes/:id/edit',
         resolve: { post: HikeDetailsResolver },        
         component: EditPostComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'hikes/:id/delete',
+        resolve: { post: HikeDetailsResolver },        
+        component: DeletePostComponent,
         canActivate: [AuthGuard]
     },
     {path: '**', component: NotFoundComponent},

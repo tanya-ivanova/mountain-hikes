@@ -89,13 +89,6 @@ export class HikeDetailsComponent implements OnInit, OnDestroy {
         this.postId = this.route.snapshot.params['id'];
     }
 
-    onDelete() {
-        this.hikeService.delete(this.postId).subscribe(() => {
-            console.log('Post is deleted');
-            this.router.navigate(['/hikes']);
-        })
-    }
-
     onLike() {
         this.hikeService.like(this.postId).subscribe(() => {
             this.hasLiked = true;

@@ -1,4 +1,5 @@
-<section class="hike-details" *ngIf="!isLoading">
+<section class="hike-details" *ngIf="!isLoading">   
+
     <app-weather [currentWeather]="currentWeather" [forecastWeather]="forecastWeather" [post]="post" />
 
     <div class="main-container">
@@ -33,7 +34,7 @@
                 <p *ngIf="hasLiked && !isOwner">You already liked this hike!</p>
                 <button *ngIf="!hasLiked && !isOwner" class="btn-like" (click)="onLike()"><span>Like</span><i class="fa-solid fa-heart"></i></button>
                 <a *ngIf="isOwner" [routerLink]="['/hikes', post._id, 'edit']" class="btn-edit">Edit</a>
-                <button *ngIf="isOwner" class="btn-delete" (click)="onDelete()">Delete</button>
+                <a *ngIf="isOwner" class="btn-delete" [routerLink]="['/hikes', post._id, 'delete']">Delete</a>
             </div>
         </div>
     </div>

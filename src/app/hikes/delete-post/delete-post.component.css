@@ -1,0 +1,46 @@
+.modal-backdrop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal h2 {
+    font-size: 28px;
+    color: #0097dc;
+    margin-bottom: 40px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 30px;
+}
+
+.btn-confirm {
+    font-weight: bold;
+}
+
+.btn-cancel,
+.btn-confirm {
+    background-color: #0050c3;
+    color: white;
+    border: 1px solid white;
+    padding: 10px 30px;
+    font-size: 20px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.btn-cancel:hover,
+.btn-confirm:hover {
+    background-color: #8fdfd3;
+    color: #4c3868;
+    cursor: pointer;
+    border: 0.5px solid #0050c3;
+} 

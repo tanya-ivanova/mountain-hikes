@@ -18,6 +18,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { HikesComponent } from './hikes/hikes.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DeletePostComponent } from './delete-post/delete-post.component';
 
 
 
@@ -35,6 +36,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MyHikesComponent,
     SearchComponent,
     HikesComponent,
+    DeletePostComponent,
   ],
   imports: [
     CommonModule,
