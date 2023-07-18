@@ -34,6 +34,22 @@ export class HikeService {
         return this.http.post('https://api-express-server.onrender.com/data/posts', postData);
     }
 
+    updatePost(postId: string, updatedHike: {
+        name: string;
+        mountain: string;
+        country: string;
+        duration: string;
+        description: string;
+        latitude: string;
+        longitude: string;  
+    }) {
+        return this.http.put(`https://api-express-server.onrender.com/data/posts/${postId}`, updatedHike);
+    }
+
+    delete(postId: string) {
+        return this.http.delete(`https://api-express-server.onrender.com/data/posts/${postId}`);
+    }
+
     like(postId: string) {
         return this.http.post(`https://api-express-server.onrender.com/data/posts/${postId}/likes`, {});
     }

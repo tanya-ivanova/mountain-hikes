@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { WeatherService } from '../weather.service';
 import { CurrentWeather, ForecastWeather } from '../../types/Weather';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Hike } from 'src/app/types/Hike';
 import { AuthService } from 'src/app/auth/auth.service';
 import { HikeService } from '../hike.service';
@@ -59,6 +59,7 @@ export class HikeDetailsComponent implements OnInit, OnDestroy {
     constructor(
         private weatherService: WeatherService,
         private route: ActivatedRoute,
+        private router: Router,
         private authService: AuthService,
         private hikeService: HikeService,
     ) { }
@@ -86,6 +87,13 @@ export class HikeDetailsComponent implements OnInit, OnDestroy {
         this.isLoading = false;
 
         this.postId = this.route.snapshot.params['id'];
+    }
+
+    onDelete() {
+        this.hikeService.delete(this.postId).subscribe(() => {
+            console.log('Post is deleted');
+            this.router.navigate(['/hikes']);
+        })
     }
 
     onLike() {
