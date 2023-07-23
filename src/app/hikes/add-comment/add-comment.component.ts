@@ -15,6 +15,9 @@ export class AddCommentComponent implements OnInit {
     isCommentAdded: boolean = false;
     @Output() onCommentAdd = new EventEmitter<boolean>;
 
+    isLoading: boolean = false;
+    errorMessage: string = '';
+
     constructor(
         private route: ActivatedRoute,
         private hikeService: HikeService,
@@ -28,14 +31,22 @@ export class AddCommentComponent implements OnInit {
         if (!this.form?.valid) {
             return;
         }
+        this.isLoading = true;
 
         if(this.form) {
             this.newComment = this.form.value.content;
         }
         
-        this.hikeService.comment(this.postId, this.newComment).subscribe(response => {
-            this.isCommentAdded = true;
-            this.onCommentAdd.emit(this.isCommentAdded);
-        });
+        this.hikeService.comment(this.postId, this.newComment).subscribe(
+            response => {
+                this.isLoading = false;
+                this.isCommentAdded = true;
+                this.onCommentAdd.emit(this.isCommentAdded);
+            },
+            error => {
+                this.isLoading = false;
+                this.errorMessage = error.error.message;
+            }
+        );
     }
 }

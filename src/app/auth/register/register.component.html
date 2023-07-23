@@ -1,5 +1,11 @@
 <section class="register">
-    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <app-spinner *ngIf="isLoading" />
+    
+    <div *ngIf="errorMessage" class="registerError">
+        <p>{{errorMessage}}</p>
+    </div>
+
+    <form *ngIf="!isLoading" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
         <h2>Register</h2>
         <div>
             <label for="email">Email</label>

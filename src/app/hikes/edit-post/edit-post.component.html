@@ -1,5 +1,11 @@
 <section class="edit-post">
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <app-spinner *ngIf="isLoading" />
+
+    <div *ngIf="errorMessage" class="editError">
+        <p>{{errorMessage}}</p>
+    </div>
+
+    <form *ngIf="!isLoading" [formGroup]="form" (ngSubmit)="onSubmit()">
         <h2>Edit post</h2>
         <div class="inputs">
             <div class="left-inputs">

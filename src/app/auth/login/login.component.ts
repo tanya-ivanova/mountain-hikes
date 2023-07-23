@@ -21,6 +21,9 @@ export class LoginComponent {
         ],        
     });
 
+    isLoading: boolean = false;
+    errorMessage = '';
+
     constructor(
         private authService: AuthService,
         private router: Router,
@@ -30,15 +33,25 @@ export class LoginComponent {
     onSubmit() {
         if (!this.signinForm.valid) {
             return;
-        }        
+        } 
+        this.isLoading = true;       
 
         const email = this.signinForm.get('email')?.value;
         const password = this.signinForm.get('password')?.value;
 
         if(email && password) {
-            this.authService.login(email, password).subscribe(resData => {                
-                this.router.navigate(['/hikes']);
-            })
-        }        
+            this.authService.login(email, password).subscribe(
+                resData => {
+                    this.isLoading = false;                
+                    this.router.navigate(['/hikes']);
+                }, 
+                error => {
+                    this.isLoading = false;
+                    this.errorMessage = error.error.message;                    
+                }
+            );
+        } 
+        
+        this.signinForm.reset();
     }
 }

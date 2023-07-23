@@ -18,6 +18,8 @@ export class WeatherComponent {
 
     @Input() forecastWeather: ForecastWeather[] = [];
 
+    @Input() errorInWeatherService: string = '';
+
     @Input() post: Hike = {
         name: '',
         mountain: '',

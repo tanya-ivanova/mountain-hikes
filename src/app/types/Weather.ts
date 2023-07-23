@@ -16,6 +16,9 @@ export interface ForecastWeather {
 };
 
 export interface Weather {
+    error?: {
+        message: string;
+    }
     currentWeather: CurrentWeather;
     forecastWeather: ForecastWeather[];
 }

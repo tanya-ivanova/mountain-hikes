@@ -85,6 +85,9 @@ export class EditPostComponent implements OnInit {
         ],
     });
 
+    isLoading: boolean = false;
+    errorMessage: string = '';
+
     constructor(
         private route: ActivatedRoute,
         private router: Router,
@@ -111,6 +114,7 @@ export class EditPostComponent implements OnInit {
         if (!this.form?.valid) {
             return;
         }
+        this.isLoading = true;
 
         this.updatedHike.name = this.form.get('name')?.value || '';
         this.updatedHike.mountain = this.form.get('mountain')?.value || '';
@@ -120,9 +124,16 @@ export class EditPostComponent implements OnInit {
         this.updatedHike.latitude = this.form.get('latitude')?.value || '';
         this.updatedHike.longitude = this.form.get('longitude')?.value || '';
 
-        this.hikeService.updatePost(this.postId, this.updatedHike).subscribe(response => {
-            this.router.navigate(['/hikes', this.postId, 'details'])
-        })
+        this.hikeService.updatePost(this.postId, this.updatedHike).subscribe(
+            response => {
+                this.isLoading = false;
+                this.router.navigate(['/hikes', this.postId, 'details'])
+            },
+            error => {
+                this.isLoading = false;
+                this.errorMessage = error.error.message;
+            }
+        )
 
         this.form?.reset();
     }

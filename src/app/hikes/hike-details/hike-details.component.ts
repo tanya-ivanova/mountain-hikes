@@ -31,6 +31,8 @@ export class HikeDetailsComponent implements OnInit, OnDestroy {
 
     forecastWeather: ForecastWeather[] = [];
 
+    errorInWeatherService = '';
+
     post: Hike = {
         name: '',
         mountain: '',
@@ -55,6 +57,7 @@ export class HikeDetailsComponent implements OnInit, OnDestroy {
 
     hasLiked: boolean = false;
     totalLikes: number = 0;
+    errorLike: string = '';
 
     constructor(
         private weatherService: WeatherService,
@@ -67,8 +70,8 @@ export class HikeDetailsComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.userSub = this.authService.user.subscribe(user => {
-            this.isLogged = !!user.accessToken;
-            this.userId = user._id;           
+            this.isLogged = !!user;
+            this.userId = user?._id || '';           
         });
 
         this.post = this.route.snapshot.data['post'];       
@@ -81,6 +84,9 @@ export class HikeDetailsComponent implements OnInit, OnDestroy {
         }
 
         this.weatherService.getWeather(this.post.latitude, this.post.longitude).subscribe(weather => {
+            if(weather.error) {
+                this.errorInWeatherService = weather.error.message;
+            }
             this.currentWeather = weather.currentWeather;
             this.forecastWeather = weather.forecastWeather;
         });
@@ -90,10 +96,15 @@ export class HikeDetailsComponent implements OnInit, OnDestroy {
     }
 
     onLike() {
-        this.hikeService.like(this.postId).subscribe(() => {
-            this.hasLiked = true;
-            this.totalLikes++;
-        });
+        this.hikeService.like(this.postId).subscribe(
+            () => {
+                this.hasLiked = true;
+                this.totalLikes++;
+            },
+            error => {                
+                this.errorLike = error.error.message;
+            }
+        );
     }
 
     onCommentAdd(isCommentAdded: boolean) {

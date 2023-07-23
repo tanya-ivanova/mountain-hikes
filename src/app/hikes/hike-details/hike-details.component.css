@@ -147,3 +147,11 @@ a {
 app-comments {
     width: 50%;
 }
+
+.errorLike {
+    padding: 20px 50px;
+    background-color: lightpink;
+    color: #4C3868;
+    font-size: 20px;   
+    border-radius: 6px;
+}

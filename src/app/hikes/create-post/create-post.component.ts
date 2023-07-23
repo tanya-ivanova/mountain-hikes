@@ -11,11 +11,9 @@ import { Router } from '@angular/router';
     styleUrls: ['./create-post.component.css']
 })
 export class CreatePostComponent {
-    constructor(
-        private hikeService: HikeService,
-        private router: Router,
-    ) {}
-
+    isLoading: boolean = false;
+    errorMessage: string = '';
+   
     @ViewChild('f') form: NgForm | undefined;    
     photos: string[] = [];
     newHike: {
@@ -38,6 +36,11 @@ export class CreatePostComponent {
         photos: [],
     };
 
+    constructor(
+        private hikeService: HikeService,
+        private router: Router,
+    ) {}
+
     onFilesSelected(event: any) {
         console.log(event.target?.files);        
 
@@ -56,6 +59,7 @@ export class CreatePostComponent {
         if (!this.form?.valid) {
             return;
         } 
+        this.isLoading = true;
 
         this.newHike.name = this.form?.value.name;
         this.newHike.mountain = this.form?.value.mountain;
@@ -66,9 +70,16 @@ export class CreatePostComponent {
         this.newHike.longitude = this.form?.value.longitude;
         this.newHike.photos = this.photos;
 
-        this.hikeService.createPost(this.newHike).subscribe(() => {
-            this.router.navigate(['/hikes']);
-        })
+        this.hikeService.createPost(this.newHike).subscribe(
+            () => {
+                this.isLoading = false;
+                this.router.navigate(['/hikes']);
+            },
+            error => {
+                this.isLoading = false;
+                this.errorMessage = error.error.message;
+            }
+        )
 
         this.form?.reset();
     }

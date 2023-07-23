@@ -46,8 +46,8 @@ export class CommentsComponent implements OnInit, OnChanges {
 
     ngOnInit() {
         this.userSub = this.authService.user.subscribe(user => {
-            this.isLogged = !!user.accessToken;
-            this.userId = user._id;           
+            this.isLogged = !!user;
+            this.userId = user?._id || '';           
         });
 
         this.post = this.route.snapshot.data['post'];

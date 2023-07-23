@@ -9,6 +9,8 @@ import { HikeService } from '../hike.service';
 })
 export class DeletePostComponent implements OnInit {  
     postId = '';
+    isLoading: boolean = false;
+    errorMessage: string = '';
 
     constructor( 
         private route: ActivatedRoute,       
@@ -21,9 +23,18 @@ export class DeletePostComponent implements OnInit {
     }
 
     onDelete() {
-        this.hikeService.delete(this.postId).subscribe(() => {            
-            this.router.navigate(['/hikes']);
-        })
+        this.isLoading = true;
+        
+        this.hikeService.delete(this.postId).subscribe(
+            () => {
+                this.isLoading = false;            
+                this.router.navigate(['/hikes']);
+            },
+            error => {
+                this.isLoading = false;
+                this.errorMessage = error.error.message;
+            }
+        )
     }
 
     onClose() {

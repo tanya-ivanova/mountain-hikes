@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
     styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-
     signupForm = this.fb.group({
         email: ['', [
             Validators.required,
@@ -27,6 +26,9 @@ export class RegisterComponent {
         ]
         ]
     });
+
+    isLoading: boolean = false;
+    errorMessage: string = '';
 
     constructor(
         private fb: FormBuilder,
@@ -64,14 +66,24 @@ export class RegisterComponent {
         if (!this.signupForm.valid) {
             return;
         }
+        this.isLoading = true;
                 
         const email = this.signupForm.get('email')?.value;
         const password = this.signupForm.get('password')?.value;
 
         if(email && password) {
-            this.authService.register(email, password).subscribe(resData => {               
-                this.router.navigate(['/hikes']);
-            })
+            this.authService.register(email, password).subscribe(
+                resData => {
+                    this.isLoading = false;            
+                    this.router.navigate(['/hikes']);
+                },
+                error => {
+                    this.isLoading = false;
+                    this.errorMessage = error.error.message;
+                }
+            )
         }
+
+        this.signupForm.reset();
     }
 }

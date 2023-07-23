@@ -1,5 +1,11 @@
 <section class="create-post">
-    <form (ngSubmit)="onSubmit()" #f="ngForm">
+    <app-spinner *ngIf="isLoading" />
+
+    <div *ngIf="errorMessage" class="postError">
+        <p>{{errorMessage}}</p>
+    </div>
+
+    <form *ngIf="!isLoading" (ngSubmit)="onSubmit()" #f="ngForm">
         <h2>Create post</h2>
         <div class="inputs">
             <div class="left-inputs">

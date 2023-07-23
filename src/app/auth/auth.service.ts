@@ -14,11 +14,7 @@ export interface AuthResponseData {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-    user = new BehaviorSubject<User>({
-        _id: '',
-        email: '',
-        accessToken: '',        
-    });    
+    user = new BehaviorSubject<User | null>(null);    
 
     constructor(private http: HttpClient, private router: Router) { }
 
@@ -84,11 +80,7 @@ export class AuthService {
     }
 
     logout() {
-        this.user.next({
-            _id: '',
-            email: '',
-            accessToken: '',        
-        });
+        this.user.next(null);
         this.router.navigate(['/']);
         localStorage.removeItem('userData');        
     }    

@@ -1,6 +1,11 @@
 <section class="hike-details" *ngIf="!isLoading">   
 
-    <app-weather [currentWeather]="currentWeather" [forecastWeather]="forecastWeather" [post]="post" />
+    <app-weather 
+        [currentWeather]="currentWeather" 
+        [forecastWeather]="forecastWeather" 
+        [post]="post" 
+        [errorInWeatherService]="errorInWeatherService"
+    />
 
     <div class="main-container">
         <div class="image-section">
@@ -31,6 +36,7 @@
                 <b>Hike description:</b> {{post.description}}
             </p>
             <div class="buttons-container" *ngIf="isLogged">
+                <p *ngIf="errorLike" class="errorLike">{{errorLike}}</p>
                 <p *ngIf="hasLiked && !isOwner">You already liked this hike!</p>
                 <button *ngIf="!hasLiked && !isOwner" class="btn-like" (click)="onLike()"><span>Like</span><i class="fa-solid fa-heart"></i></button>
                 <a *ngIf="isOwner" [routerLink]="['/hikes', post._id, 'edit']" class="btn-edit">Edit</a>

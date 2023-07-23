@@ -1,18 +1,22 @@
 <div class="weather">
-  <h2>The Weather in the region of peak {{post.name}}</h2>
-  <div class="wrapper">
-    <div class="current-weather">
-      <h3>The Weather now</h3>      
-        <p>{{ currentWeather.temp }}&#176;C</p>
-        <img src="../assets/{{ currentWeather.photo }}.png" alt="weather" />
-        <p>{{ currentWeather.text }}</p>         
+    <h2>The Weather in the region of peak {{post.name}}</h2>
+    <div *ngIf="errorInWeatherService" class="error">
+        {{errorInWeatherService}}
     </div>
 
-    <div class="forecast-weather">
-        <h3>3-day Forecast</h3>
-        <div class="forecast-wrapper">
-            <app-weather-forecast-day *ngFor="let forecastDay of forecastWeather" [forecastDay]="forecastDay" />
+    <div *ngIf="!errorInWeatherService" class="wrapper">
+        <div class="current-weather">
+            <h3>The Weather now</h3>
+            <p>{{ currentWeather.temp }}&#176;C</p>
+            <img src="../assets/{{ currentWeather.photo }}.png" alt="weather" />
+            <p>{{ currentWeather.text }}</p>
+        </div>
+
+        <div class="forecast-weather">
+            <h3>3-day Forecast</h3>
+            <div class="forecast-wrapper">
+                <app-weather-forecast-day *ngFor="let forecastDay of forecastWeather" [forecastDay]="forecastDay" />
+            </div>
         </div>
     </div>
-  </div>
 </div>
