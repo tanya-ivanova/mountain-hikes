@@ -45,6 +45,13 @@ section.gallery {
   font-size: 18px;    
 }
 
+.content-container .elapsed-time {
+  text-align: right;
+  color: #f27756;
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .photos-container {
     width: 90%;
     margin: 0 auto;

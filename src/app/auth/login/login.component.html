@@ -1,9 +1,7 @@
 <section class="login">
     <app-spinner *ngIf="isLoading" />
 
-    <div *ngIf="errorMessage" class="loginError">
-        <p>{{errorMessage}}</p>
-    </div>
+    <app-error *ngIf="apiError" />
     
     <form *ngIf="!isLoading" [formGroup]="signinForm" (ngSubmit)="onSubmit()">
         <h2>Login</h2>
@@ -39,6 +37,6 @@
             Login
         </button>
         
-        <p>You don't have an account? Register <a routerLink="/register">here</a></p>
+        <p>You don't have an account? Register <a routerLink="/auth/register">here</a></p>
     </form>
 </section>

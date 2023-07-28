@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { ErrorService } from 'src/app/shared/error/error.service';
 
 @Component({
     selector: 'app-login',
@@ -22,33 +23,38 @@ export class LoginComponent {
     });
 
     isLoading: boolean = false;
-    errorMessage = '';
+    apiError = '';
 
     constructor(
         private authService: AuthService,
         private router: Router,
-        private fb: FormBuilder
+        private fb: FormBuilder,
+        private errorService: ErrorService,
     ) {}
     
     onSubmit() {
         if (!this.signinForm.valid) {
             return;
         } 
+        this.errorService.removeError();
+        this.errorService.apiError$.subscribe((err) => {
+            this.apiError = err || '';            
+        });
+        
         this.isLoading = true;       
 
         const email = this.signinForm.get('email')?.value;
         const password = this.signinForm.get('password')?.value;
 
         if(email && password) {
-            this.authService.login(email, password).subscribe(
-                resData => {
+            this.authService.login(email, password).subscribe({
+                next: (resData) => {
                     this.isLoading = false;                
                     this.router.navigate(['/hikes']);
                 }, 
-                error => {
-                    this.isLoading = false;
-                    this.errorMessage = error.error.message;                    
-                }
+                complete: () => {
+                    this.isLoading = false;                                      
+                }}
             );
         } 
         

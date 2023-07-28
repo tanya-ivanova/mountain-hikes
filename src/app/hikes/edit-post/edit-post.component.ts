@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HikeService } from '../hike.service';
 
 import { Hike } from 'src/app/types/Hike';
+import { ErrorService } from 'src/app/shared/error/error.service';
 
 @Component({
     selector: 'app-edit-post',
@@ -20,6 +21,7 @@ export class EditPostComponent implements OnInit {
         latitude: '',
         longitude: '',
         photos: [],
+        createdAt: '',
         _id: '',
         likes: [],
         comments: [],
@@ -86,13 +88,14 @@ export class EditPostComponent implements OnInit {
     });
 
     isLoading: boolean = false;
-    errorMessage: string = '';
+    apiError: string = '';
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private hikeService: HikeService,
         private fb: FormBuilder,
+        private errorService: ErrorService,
     ) { }
 
     ngOnInit(): void {
@@ -114,6 +117,11 @@ export class EditPostComponent implements OnInit {
         if (!this.form?.valid) {
             return;
         }
+        this.errorService.removeError();
+        this.errorService.apiError$.subscribe((err) => {
+            this.apiError = err || '';
+        });
+
         this.isLoading = true;
 
         this.updatedHike.name = this.form.get('name')?.value || '';
@@ -124,16 +132,15 @@ export class EditPostComponent implements OnInit {
         this.updatedHike.latitude = this.form.get('latitude')?.value || '';
         this.updatedHike.longitude = this.form.get('longitude')?.value || '';
 
-        this.hikeService.updatePost(this.postId, this.updatedHike).subscribe(
-            response => {
+        this.hikeService.updatePost(this.postId, this.updatedHike).subscribe({
+            next: (response) => {
                 this.isLoading = false;
                 this.router.navigate(['/hikes', this.postId, 'details'])
             },
-            error => {
+            complete: () => {
                 this.isLoading = false;
-                this.errorMessage = error.error.message;
             }
-        )
+        })
 
         this.form?.reset();
     }

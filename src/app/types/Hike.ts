@@ -10,6 +10,7 @@ export interface Hike {
     latitude: string;
     longitude: string;
     photos: string[];
+    createdAt: string;
     likes: string[];
     comments: Comment[];
     _ownerId: {

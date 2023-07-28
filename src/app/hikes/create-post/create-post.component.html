@@ -1,9 +1,7 @@
 <section class="create-post">
     <app-spinner *ngIf="isLoading" />
 
-    <div *ngIf="errorMessage" class="postError">
-        <p>{{errorMessage}}</p>
-    </div>
+    <app-error *ngIf="apiError" />
 
     <form *ngIf="!isLoading" (ngSubmit)="onSubmit()" #f="ngForm">
         <h2>Create post</h2>

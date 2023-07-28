@@ -30,6 +30,7 @@ export class CommentsComponent implements OnInit, OnChanges {
         latitude: '',
         longitude: '',
         photos: [],
+        createdAt: '',
         _id: '',
         likes: [],
         comments: [],
@@ -45,7 +46,7 @@ export class CommentsComponent implements OnInit, OnChanges {
     ) {}
 
     ngOnInit() {
-        this.userSub = this.authService.user.subscribe(user => {
+        this.userSub = this.authService.user$.subscribe(user => {
             this.isLogged = !!user;
             this.userId = user?._id || '';           
         });

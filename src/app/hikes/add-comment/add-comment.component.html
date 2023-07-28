@@ -1,8 +1,6 @@
 <app-spinner *ngIf="isLoading" />
 
-<div *ngIf="errorMessage" class="commentError">
-    <p>{{errorMessage}}</p>
-</div>
+<app-error *ngIf="apiError" />
 
 <form *ngIf="!isLoading" class="add-comment" (ngSubmit)="onSubmit()" #f="ngForm">
     <textarea 

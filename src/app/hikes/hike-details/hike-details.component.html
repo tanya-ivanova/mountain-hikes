@@ -30,7 +30,10 @@
             <div class="divider"></div>
             <div class="after-divider">
                 <app-likes [totalLikes]="totalLikes" />
-                <p class="post-author">Posted by: {{post._ownerId.email}}</p>
+                <div>
+                    <p class="post-author">Posted by: {{post._ownerId.email}}</p>
+                    <p class="elapsed-time">{{post.createdAt | elapsedTime}}</p>
+                </div>
             </div>
             <p class="description">
                 <b>Hike description:</b> {{post.description}}

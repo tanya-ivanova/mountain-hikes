@@ -1,9 +1,7 @@
 <section class="edit-post">
     <app-spinner *ngIf="isLoading" />
 
-    <div *ngIf="errorMessage" class="editError">
-        <p>{{errorMessage}}</p>
-    </div>
+    <app-error *ngIf="apiError" />
 
     <form *ngIf="!isLoading" [formGroup]="form" (ngSubmit)="onSubmit()">
         <h2>Edit post</h2>

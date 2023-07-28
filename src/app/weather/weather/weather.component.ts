@@ -29,6 +29,7 @@ export class WeatherComponent {
         latitude: '',
         longitude: '',
         photos: [],
+        createdAt: '',
         _id: '',
         likes: [],
         comments: [],

@@ -13,6 +13,7 @@ a {
 .main-container {
     margin-bottom: 50px;
     display: flex;
+    justify-content: space-around;
     gap: 60px;    
 }
 
@@ -51,7 +52,7 @@ a {
 }
 
 .content-container {
-    flex-basis: 50%;
+    width: 50%;
     display: flex;
     flex-direction: column;
 }
@@ -89,6 +90,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 50px;
     margin-top: 10px;
     margin-bottom: 20px;
 }
@@ -97,6 +99,13 @@ a {
     text-align: right;
     color: #f27756;
     font-size: 18px;    
+}
+
+.content-container .elapsed-time {
+    text-align: right;
+    color: #f27756;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .content-container p.description {

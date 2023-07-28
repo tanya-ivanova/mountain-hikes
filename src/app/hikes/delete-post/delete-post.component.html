@@ -2,9 +2,7 @@
     <app-spinner *ngIf="isLoading" />
 
     <div *ngIf="!isLoading" class="modal">
-        <div *ngIf="errorMessage" class="deleteError">
-            <p>{{errorMessage}}</p>
-        </div>
+        <app-error *ngIf="apiError" />
 
         <h2>Are you sure you want to delete this post?</h2>
         <div class="modal-buttons">

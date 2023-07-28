@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Validators, ValidatorFn, AbstractControl, ValidationErrors, FormBuilder } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { ErrorService } from 'src/app/shared/error/error.service';
 
 @Component({
     selector: 'app-register',
@@ -28,12 +29,13 @@ export class RegisterComponent {
     });
 
     isLoading: boolean = false;
-    errorMessage: string = '';
+    apiError: string = '';
 
     constructor(
         private fb: FormBuilder,
         private authService: AuthService,
         private router: Router,
+        private errorService: ErrorService,
     ) { }
 
     passwordValidation(): ValidatorFn {
@@ -66,22 +68,27 @@ export class RegisterComponent {
         if (!this.signupForm.valid) {
             return;
         }
+        this.errorService.removeError();
+        this.errorService.apiError$.subscribe((err) => {
+            this.apiError = err || '';
+        });
+
         this.isLoading = true;
-                
+
         const email = this.signupForm.get('email')?.value;
         const password = this.signupForm.get('password')?.value;
+        const repass = this.signupForm.get('repass')?.value;
 
-        if(email && password) {
-            this.authService.register(email, password).subscribe(
-                resData => {
-                    this.isLoading = false;            
+        if (email && password && repass) {
+            this.authService.register(email, password, repass).subscribe({
+                next: (resData) => {
+                    this.isLoading = false;
                     this.router.navigate(['/hikes']);
                 },
-                error => {
-                    this.isLoading = false;
-                    this.errorMessage = error.error.message;
+                complete: () => {
+                    this.isLoading = false;                    
                 }
-            )
+            })
         }
 
         this.signupForm.reset();

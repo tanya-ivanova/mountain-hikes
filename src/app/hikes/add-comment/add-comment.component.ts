@@ -2,6 +2,7 @@ import { Component, ViewChild, OnInit, Output, EventEmitter } from '@angular/cor
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { HikeService } from '../hike.service';
+import { ErrorService } from 'src/app/shared/error/error.service';
 
 @Component({
     selector: 'app-add-comment',
@@ -16,11 +17,12 @@ export class AddCommentComponent implements OnInit {
     @Output() onCommentAdd = new EventEmitter<boolean>;
 
     isLoading: boolean = false;
-    errorMessage: string = '';
+    apiError: string = '';
 
     constructor(
         private route: ActivatedRoute,
         private hikeService: HikeService,
+        private errorService: ErrorService,
     ) {}
 
     ngOnInit(): void {
@@ -31,22 +33,26 @@ export class AddCommentComponent implements OnInit {
         if (!this.form?.valid) {
             return;
         }
+        this.errorService.removeError();
+        this.errorService.apiError$.subscribe((err) => {
+            this.apiError = err || '';            
+        });
+
         this.isLoading = true;
 
         if(this.form) {
             this.newComment = this.form.value.content;
         }
         
-        this.hikeService.comment(this.postId, this.newComment).subscribe(
-            response => {
+        this.hikeService.comment(this.postId, this.newComment).subscribe({
+            next: (response) => {
                 this.isLoading = false;
                 this.isCommentAdded = true;
                 this.onCommentAdd.emit(this.isCommentAdded);
             },
-            error => {
-                this.isLoading = false;
-                this.errorMessage = error.error.message;
+            complete: () => {
+                this.isLoading = false;                
             }
-        );
+        });
     }
 }

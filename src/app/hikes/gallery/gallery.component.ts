@@ -18,6 +18,7 @@ export class GalleryComponent implements OnInit {
         latitude: '',
         longitude: '',
         photos: [],
+        createdAt: '',
         _id: '',
         likes: [],
         comments: [],

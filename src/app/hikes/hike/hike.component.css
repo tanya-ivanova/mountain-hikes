@@ -57,12 +57,6 @@ article:hover {
     margin-bottom: 5px;   
 }
 
-.content-container p.post-author {
-    text-align: right;
-    color: #f27756;
-    font-size: 18px;
-}
-
 .hike-footer {
     display: flex;
     justify-content: space-between;
@@ -84,4 +78,17 @@ article:hover {
     font-size: 28px;
     color: #FF0130;
     margin-right: 6px;
+}
+
+.hike-footer p.post-author {
+    text-align: right;
+    color: #f27756;
+    font-size: 18px;
+}
+
+.hike-footer .elapsed-time {
+    text-align: right;
+    color: #f27756;
+    font-size: 18px;
+    font-weight: bold;
 }

@@ -16,6 +16,7 @@ export class HikeComponent {
     latitude: '',
     longitude: '',
     photos: [],
+    createdAt: '',
     _id: '',
     likes: [],
     comments: [],

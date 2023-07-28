@@ -14,17 +14,19 @@ export interface AuthResponseData {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-    user = new BehaviorSubject<User | null>(null);    
+    private user$$ = new BehaviorSubject<User | null>(null);    
+    user$ = this.user$$.asObservable();
 
     constructor(private http: HttpClient, private router: Router) { }
 
-    register(email: string, password: string) {
+    register(email: string, password: string, repass: string) {
         return this.http
             .post<AuthResponseData>(
                 'https://api-express-server.onrender.com/users/register',
                 {
-                    email: email,
-                    password: password,                    
+                    email,
+                    password, 
+                    repass                   
                 }
             )
             .pipe(                
@@ -43,8 +45,8 @@ export class AuthService {
             .post<AuthResponseData>(
                 'https://api-express-server.onrender.com/users/login',
                 {
-                    email: email,
-                    password: password,                
+                    email,
+                    password,                
                 }
             )
             .pipe(                
@@ -75,12 +77,12 @@ export class AuthService {
         );
 
         if (loadedUser.accessToken) {
-            this.user.next(loadedUser);            
+            this.user$$.next(loadedUser);            
         }
     }
 
     logout() {
-        this.user.next(null);
+        this.user$$.next(null);
         this.router.navigate(['/']);
         localStorage.removeItem('userData');        
     }    
@@ -91,7 +93,7 @@ export class AuthService {
         accessToken: string        
     ) {        
         const user = new User(email, _id, accessToken);
-        this.user.next(user);              
+        this.user$$.next(user);              
         localStorage.setItem('userData', JSON.stringify(user));
     }   
 }

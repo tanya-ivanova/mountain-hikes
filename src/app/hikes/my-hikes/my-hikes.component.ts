@@ -22,7 +22,7 @@ export class MyHikesComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit() {
-        this.userSub = this.authService.user.subscribe(user => {            
+        this.userSub = this.authService.user$.subscribe(user => {            
             this.userId = user?._id || '';   
             
         });

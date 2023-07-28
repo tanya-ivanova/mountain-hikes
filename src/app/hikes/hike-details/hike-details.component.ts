@@ -7,6 +7,7 @@ import { Hike } from 'src/app/types/Hike';
 import { AuthService } from 'src/app/auth/auth.service';
 import { HikeService } from '../hike.service';
 import { Comment } from 'src/app/types/Comment';
+import { ErrorService } from 'src/app/shared/error/error.service';
 
 @Component({
     selector: 'app-hike-details',
@@ -42,6 +43,7 @@ export class HikeDetailsComponent implements OnInit, OnDestroy {
         latitude: '',
         longitude: '',
         photos: [],
+        createdAt: '',
         _id: '',
         likes: [],
         comments: [],
@@ -65,11 +67,12 @@ export class HikeDetailsComponent implements OnInit, OnDestroy {
         private router: Router,
         private authService: AuthService,
         private hikeService: HikeService,
+        private errorService: ErrorService,
     ) { }
 
 
     ngOnInit() {
-        this.userSub = this.authService.user.subscribe(user => {
+        this.userSub = this.authService.user$.subscribe(user => {
             this.isLogged = !!user;
             this.userId = user?._id || '';           
         });
@@ -96,14 +99,16 @@ export class HikeDetailsComponent implements OnInit, OnDestroy {
     }
 
     onLike() {
+        this.errorService.removeError();
+        this.errorService.apiError$.subscribe((err: any) => {
+            this.errorLike = err.error.message || '';            
+        });
+
         this.hikeService.like(this.postId).subscribe(
             () => {
                 this.hasLiked = true;
                 this.totalLikes++;
-            },
-            error => {                
-                this.errorLike = error.error.message;
-            }
+            }            
         );
     }
 

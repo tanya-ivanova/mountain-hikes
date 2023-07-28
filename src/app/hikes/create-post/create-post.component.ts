@@ -4,6 +4,7 @@ import { storage } from 'src/firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { HikeService } from '../hike.service';
 import { Router } from '@angular/router';
+import { ErrorService } from 'src/app/shared/error/error.service';
 
 @Component({
     selector: 'app-create-post',
@@ -12,9 +13,9 @@ import { Router } from '@angular/router';
 })
 export class CreatePostComponent {
     isLoading: boolean = false;
-    errorMessage: string = '';
-   
-    @ViewChild('f') form: NgForm | undefined;    
+    apiError: string = '';
+
+    @ViewChild('f') form: NgForm | undefined;
     photos: string[] = [];
     newHike: {
         name: string;
@@ -26,23 +27,24 @@ export class CreatePostComponent {
         longitude: string;
         photos: string[];
     } = {
-        name: '',
-        mountain: '',
-        country: '',
-        duration: '',
-        description: '',
-        latitude: '',
-        longitude: '',
-        photos: [],
-    };
+            name: '',
+            mountain: '',
+            country: '',
+            duration: '',
+            description: '',
+            latitude: '',
+            longitude: '',
+            photos: [],
+        };
 
     constructor(
         private hikeService: HikeService,
         private router: Router,
-    ) {}
+        private errorService: ErrorService,
+    ) { }
 
     onFilesSelected(event: any) {
-        console.log(event.target?.files);        
+        console.log(event.target?.files);
 
         for (const file of event.target?.files) {
             const storageRef = ref(storage, file.name)
@@ -58,7 +60,12 @@ export class CreatePostComponent {
     onSubmit() {
         if (!this.form?.valid) {
             return;
-        } 
+        }
+        this.errorService.removeError();
+        this.errorService.apiError$.subscribe((err) => {
+            this.apiError = err || '';
+        });
+
         this.isLoading = true;
 
         this.newHike.name = this.form?.value.name;
@@ -70,16 +77,15 @@ export class CreatePostComponent {
         this.newHike.longitude = this.form?.value.longitude;
         this.newHike.photos = this.photos;
 
-        this.hikeService.createPost(this.newHike).subscribe(
-            () => {
+        this.hikeService.createPost(this.newHike).subscribe({
+            next: () => {
                 this.isLoading = false;
                 this.router.navigate(['/hikes']);
             },
-            error => {
+            complete: () => {
                 this.isLoading = false;
-                this.errorMessage = error.error.message;
             }
-        )
+        })
 
         this.form?.reset();
     }

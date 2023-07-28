@@ -7,8 +7,8 @@
         <nav>
             <ul role="list" *ngIf="!isLogged">
                 <li><a routerLink="/hikes">All hikes</a></li>
-                <li><a routerLink="/login">Login</a></li>
-                <li><a routerLink="/register">Register</a></li>                
+                <li><a routerLink="/auth/login">Login</a></li>
+                <li><a routerLink="/auth/register">Register</a></li>                
             </ul>
 
             <ul role="list" *ngIf="isLogged">
