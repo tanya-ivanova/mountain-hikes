@@ -19,6 +19,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { HikesComponent } from './hikes/hikes.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeletePostComponent } from './delete-post/delete-post.component';
+import { HikesRoutingModule } from './hikes-routing.module';
 
 
 
@@ -45,6 +46,7 @@ import { DeletePostComponent } from './delete-post/delete-post.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HikesRoutingModule,
   ],
   exports: [
     AddCommentComponent,

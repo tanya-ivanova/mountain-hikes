@@ -19,46 +19,49 @@ const routes: Routes = [
         path: 'auth',
         loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
     },
-    { path: 'hikes', component: AllHikesComponent },
-    {
-        path: 'my-hikes',
-        component: MyHikesComponent,
-        canActivate: [AuthGuard],
-    },
-    {
-        path: 'create-post',
-        component: CreatePostComponent,
-        canActivate: [AuthGuard],
-    },
-    {
-        path: 'search',
-        component: SearchComponent,
-        canActivate: [AuthGuard],
-    },
-    {
-        path: 'hikes/:id/details',
-        resolve: { post: HikeDetailsResolver },
-        component: HikeDetailsComponent,
-    },
-    {
-        path: 'hikes/:id/gallery',
-        resolve: { post: HikeDetailsResolver },
-        component: GalleryComponent,
-        canActivate: [AuthGuard],
-    },
-    {
-        path: 'hikes/:id/edit',
-        resolve: { post: HikeDetailsResolver },
-        component: EditPostComponent,
-        canActivate: [AuthGuard]
-    },
-    {
-        path: 'hikes/:id/delete',
-        resolve: { post: HikeDetailsResolver },
-        component: DeletePostComponent,
-        canActivate: [AuthGuard]
-    },
-    { path: '**', component: NotFoundComponent },
+    // {
+    //     path: 'hikes',
+    //     component: AllHikesComponent,
+    // },
+    // {
+    //     path: 'hikes/:id/details',
+    //     resolve: { post: HikeDetailsResolver },
+    //     component: HikeDetailsComponent,
+    // },
+    // {
+    //     path: 'hikes/:id/gallery',
+    //     resolve: { post: HikeDetailsResolver },
+    //     component: GalleryComponent,
+    //     canActivate: [AuthGuard],
+    // },
+    // {
+    //     path: 'hikes/:id/edit',
+    //     resolve: { post: HikeDetailsResolver },
+    //     component: EditPostComponent,
+    //     canActivate: [AuthGuard]
+    // },
+    // {
+    //     path: 'hikes/:id/delete',
+    //     resolve: { post: HikeDetailsResolver },
+    //     component: DeletePostComponent,
+    //     canActivate: [AuthGuard]
+    // },
+    // {
+    //     path: 'my-hikes',
+    //     component: MyHikesComponent,
+    //     canActivate: [AuthGuard],
+    // },
+    // {
+    //     path: 'create-post',
+    //     component: CreatePostComponent,
+    //     canActivate: [AuthGuard],
+    // },
+    // {
+    //     path: 'search',
+    //     component: SearchComponent,
+    //     canActivate: [AuthGuard],
+    // },
+    // { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
