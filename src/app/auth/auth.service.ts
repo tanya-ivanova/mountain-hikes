@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { catchError, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
 import { User } from './user.model';
@@ -10,12 +10,16 @@ export interface AuthResponseData {
     _id: string;
     email: string;
     accessToken: string;
+    expiresIn: number,
+    expirationDate: Date,
 }
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-    private user$$ = new BehaviorSubject<User | null>(null);    
+    private user$$ = new BehaviorSubject<User | null>(null);
     user$ = this.user$$.asObservable();
+
+    private tokenExpirationTimer: any;
 
     constructor(private http: HttpClient, private router: Router) { }
 
@@ -25,16 +29,18 @@ export class AuthService {
                 'https://api-express-server.onrender.com/users/register',
                 {
                     email,
-                    password, 
-                    repass                   
+                    password,
+                    repass
                 }
             )
-            .pipe(                
+            .pipe(
                 tap(resData => {
                     this.handleAuthentication(
                         resData.email,
                         resData._id,
                         resData.accessToken,                        
+                        resData.expirationDate,
+                        resData.expiresIn
                     );
                 })
             );
@@ -46,15 +52,17 @@ export class AuthService {
                 'https://api-express-server.onrender.com/users/login',
                 {
                     email,
-                    password,                
+                    password,
                 }
             )
-            .pipe(                
+            .pipe(
                 tap(resData => {
                     this.handleAuthentication(
                         resData.email,
                         resData._id,
                         resData.accessToken,                        
+                        resData.expirationDate,
+                        resData.expiresIn
                     );
                 })
             );
@@ -64,7 +72,9 @@ export class AuthService {
         const userData: {
             email: string;
             _id: string;
-            accessToken: string;           
+            _accessToken: string;
+            _accessTokenExpirationDate: string;
+            expiresIn: number
         } = JSON.parse(localStorage.getItem('userData') || '');
         if (!userData) {
             return;
@@ -73,27 +83,48 @@ export class AuthService {
         const loadedUser = new User(
             userData.email,
             userData._id,
-            userData.accessToken,            
+            userData._accessToken,
+            new Date(userData._accessTokenExpirationDate),
+            userData.expiresIn
         );
 
         if (loadedUser.accessToken) {
-            this.user$$.next(loadedUser);            
+            this.user$$.next(loadedUser);
+
+            const expirationDuration = new Date(userData._accessTokenExpirationDate).getTime() - new Date().getTime();
+            this.autoLogout(expirationDuration);
         }
     }
 
     logout() {
         this.user$$.next(null);
         this.router.navigate(['/']);
-        localStorage.removeItem('userData');        
-    }    
+        localStorage.removeItem('userData');
+
+        if (this.tokenExpirationTimer) {
+            clearTimeout(this.tokenExpirationTimer);
+        }
+        this.tokenExpirationTimer = null;
+    }
+
+    autoLogout(expirationDuration: number) {
+        this.tokenExpirationTimer = setTimeout(() => {
+            this.logout();
+        }, expirationDuration);
+    }
 
     private handleAuthentication(
         email: string,
         _id: string,
-        accessToken: string        
-    ) {        
-        const user = new User(email, _id, accessToken);
-        this.user$$.next(user);              
+        _accessToken: string,        
+        _accessTokenExpirationDate: Date,
+        expiresIn: number
+    ) {
+        const user = new User(email, _id, _accessToken, _accessTokenExpirationDate, expiresIn);
+        this.user$$.next(user);
+
+        this.autoLogout(expiresIn * 1000);
+
         localStorage.setItem('userData', JSON.stringify(user));
-    }   
+    }
 }
