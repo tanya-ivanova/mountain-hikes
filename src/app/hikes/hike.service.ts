@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Hike } from '../types/Hike';
+import { HikeData } from '../types/HikeData';
 
 @Injectable({
     providedIn: 'root'
@@ -9,12 +10,12 @@ export class HikeService {
 
     constructor(private http: HttpClient) { }
 
-    getAllPosts() {
-        return this.http.get<Hike[]>('https://api-express-server.onrender.com/data/posts');
+    getAllPosts(page: number) {
+        return this.http.get<HikeData>(`https://api-express-server.onrender.com/data/posts?page=${page}`);
     }
 
-    getPostsByUserId(userId: string) {
-        return this.http.get<Hike[]>(`https://api-express-server.onrender.com/data/posts?where=_ownerId%3D%22${userId}%22`);
+    getPostsByUserId(userId: string, page: number) {
+        return this.http.get<HikeData>(`https://api-express-server.onrender.com/data/posts?where=_ownerId%3D%22${userId}%22&page=${page}`);
     }
 
     getById(id: string) {
@@ -60,7 +61,7 @@ export class HikeService {
         });
     }
 
-    search(searchValue: string) {
-        return this.http.get<Hike[]>(`https://api-express-server.onrender.com/search?search=${searchValue}`);
+    search(searchValue: string, page: number) {
+        return this.http.get<HikeData>(`https://api-express-server.onrender.com/search?search=${searchValue}&page=${page}`);
     }
 }

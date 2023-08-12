@@ -4,16 +4,19 @@ section.my-hikes {
     align-items: center;
     margin: 0px auto;
     padding-top: 60px;
-    padding-bottom: 100px;
+    padding-bottom: 40px;
     min-height: 80vh;
 }
 
 section.my-hikes h2 {
     font-size: 40px;
-    color: #0050C3;
-    margin-bottom: 50px;
+    color: #0050C3;    
 }
 
 app-hikes {
     width: 100%;
+}
+
+app-pager {
+    margin: 50px;
 }

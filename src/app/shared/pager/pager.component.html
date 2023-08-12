@@ -1,0 +1,17 @@
+<div class="pager">
+    <button 
+        class="prev-btn"   
+        (click)="onPagePrev()"
+        [disabled]="page===1"
+    >
+        &lt; Prev
+    </button>
+
+    <button 
+        class="next-btn" 
+        (click)="onPageNext()"
+        [disabled]="page===totalPages"
+    >
+        Next &gt;
+    </button>
+</div>

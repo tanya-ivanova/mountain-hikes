@@ -1,22 +1,29 @@
 <section class="search">
-  <div class="search-wrapper">
-    <h2>Search by peak name</h2>
-    <form>
-      <input 
-        type="text" 
-        name="search" 
-        placeholder="Peak name" 
-        [(ngModel)]="searchValue"
-      />
-      <button 
-        type="submit"
-        (click)="onSearch()"
-      >
-        Search <i class="fa-solid fa-magnifying-glass"></i>
-      </button>
-    </form>
-  </div>
+    <div class="search-wrapper">
+        <h2>Search by peak name</h2>
+        <form>
+            <input type="text" name="search" placeholder="Peak name" [(ngModel)]="searchValue" />
+            <button type="submit" (click)="onSearch()">
+                Search <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </form>
+    </div>
 
-  <app-hikes [posts]="posts" [isLoading]="isLoading" [isSearchedHikes]="isSearchedHikes" [isInitial]="isInitial" />   
-  
+    <app-pager 
+        *ngIf="hasSearchResults"
+        [page]="page" 
+        [totalPages]="totalPages" 
+        [hasSearchResults]="hasSearchResults"
+        [searchValue]="searchValue"
+    />
+
+    <app-hikes [posts]="posts" [isLoading]="isLoading" [isSearchedHikes]="isSearchedHikes" [isInitial]="isInitial" />
+
+    <app-pager 
+        *ngIf="hasSearchResults"
+        [page]="page" 
+        [totalPages]="totalPages" 
+        [hasSearchResults]="hasSearchResults"
+        [searchValue]="searchValue"
+    />
 </section>

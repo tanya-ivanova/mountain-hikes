@@ -1,5 +1,8 @@
 <section class="my-hikes">
     <h2>My hikes</h2>
-    
+    <app-pager *ngIf="hasPosts" [page]="page" [totalPages]="totalPages" [navigateTo]="navigateTo" />
+
     <app-hikes [posts]="posts" [isLoading]="isLoading" [isMyHikes]="isMyHikes" />
+    
+    <app-pager *ngIf="hasPosts" [page]="page" [totalPages]="totalPages" [navigateTo]="navigateTo" />
 </section>
