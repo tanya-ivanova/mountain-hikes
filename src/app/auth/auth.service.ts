@@ -88,7 +88,7 @@ export class AuthService {
             userData.expiresIn
         );
 
-        if (loadedUser.accessToken) {
+        if (loadedUser) {
             this.user$$.next(loadedUser);
 
             const expirationDuration = new Date(userData._accessTokenExpirationDate).getTime() - new Date().getTime();
