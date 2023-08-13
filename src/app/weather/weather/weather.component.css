@@ -63,7 +63,7 @@
     border-radius: 6px;
 }
 
-@media (width <= 912px) {
+@media (width <= 1200px) {
     .wrapper {
         flex-direction: column;
         gap: 60px;

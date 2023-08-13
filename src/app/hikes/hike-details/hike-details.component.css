@@ -165,7 +165,7 @@ app-comments {
     border-radius: 6px;
 }
 
-@media (width <= 912px) {
+@media (width <= 1200px) {
     .main-container {
         flex-direction: column;
         width: 90%;    

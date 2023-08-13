@@ -76,7 +76,7 @@ section.gallery {
     border-radius: 6px;
 }
 
-@media (width <=912px) {
+@media (width <= 1200px) {
     .content-container {
         width: 90%;
     }

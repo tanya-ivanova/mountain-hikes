@@ -52,7 +52,7 @@ header li.welcome:hover {
     transform: scale(1);
 }
 
-@media (width <= 912px) {
+@media (width <= 1200px) {
     section.site-header {
         height: auto;
     }
