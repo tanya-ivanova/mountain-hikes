@@ -92,3 +92,9 @@ article:hover {
     font-size: 18px;
     font-weight: bold;
 }
+
+@media (width <= 912px) {
+    .image-wrapper {
+        width: auto;
+    }
+}

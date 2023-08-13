@@ -97,3 +97,9 @@ form span.error {
     color: red;
     margin-bottom: 30px;
 }
+
+@media (width <= 912px) {
+    form {
+        width: 80%;
+    }
+}

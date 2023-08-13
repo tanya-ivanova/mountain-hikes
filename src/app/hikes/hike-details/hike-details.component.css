@@ -164,3 +164,23 @@ app-comments {
     font-size: 20px;   
     border-radius: 6px;
 }
+
+@media (width <= 912px) {
+    .main-container {
+        flex-direction: column;
+        width: 90%;    
+        gap: 0;    
+    }
+
+    .main-container .image-container {
+        width: 100%;
+    }
+
+    .main-container .content-container {
+        width: 100%;
+    }
+
+    app-comments {
+        width: 90%;
+    }
+}

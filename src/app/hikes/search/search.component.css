@@ -54,3 +54,17 @@ app-hikes {
 app-pager {
     margin: 50px;
 }
+
+@media (width <= 912px) {
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .search-wrapper input {
+        width: 90%;
+        margin-right: 0px;
+    }
+}

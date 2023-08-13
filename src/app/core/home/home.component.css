@@ -25,3 +25,11 @@ section.home {
     font-family: 'Lato', sans-serif;
     letter-spacing: 2px;
 }
+
+@media (width <= 912px) {
+    .site-description {
+        top: 30px;
+        left: 50px;
+        width: 60%;
+    }
+}
