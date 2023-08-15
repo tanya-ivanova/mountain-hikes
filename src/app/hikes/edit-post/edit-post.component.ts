@@ -144,4 +144,8 @@ export class EditPostComponent implements OnInit {
 
         this.form?.reset();
     }
+
+    onCancel() {
+        this.router.navigate(['/hikes', this.postId, 'details']);
+    }
 }

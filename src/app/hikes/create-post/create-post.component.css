@@ -24,6 +24,10 @@ form .right-inputs {
     min-width: 400px;
 }
 
+form .right-inputs {
+    max-width: 400px;
+}
+
 form div {
     display: flex;
     flex-direction: column;
@@ -53,6 +57,7 @@ form div>textarea {
     border: 1px solid #4C3868;
     border-radius: 6px;
     margin-bottom: 30px;
+    resize: none;
 }
 
 form>div {
@@ -66,7 +71,8 @@ form div.upload-photos input {
 }
 
 form div.upload-photos p {
-    color: #4C3868;
+    color: #4C3868;    
+    display: inline-block;
 }
 
 form>button {

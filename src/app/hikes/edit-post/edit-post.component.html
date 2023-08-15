@@ -85,12 +85,15 @@
             </div>
         </div>
 
-        <button 
+        <div class="edit-form-buttons">
+            <button 
             type="submit" 
             [disabled]="!form.valid"
-        >
-            Edit post
-        </button>
+            >
+                Edit post
+            </button>
+            <button (click)="onCancel()">Cancel</button>
+        </div>
     </form>
 </section>
 

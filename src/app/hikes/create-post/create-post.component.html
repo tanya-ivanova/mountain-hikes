@@ -92,7 +92,7 @@
                     <textarea 
                         name="description" 
                         id="description" 
-                        cols="30" 
+                        cols="20" 
                         rows="15"
                         ngModel
                         required
@@ -113,6 +113,7 @@
                         required
                         #photos="ngModel"
                     >
+                    <p>* Please note that the first image you upload will be used as a cover image for your post.</p>
                     <span class="error" *ngIf="!photos.valid && photos.touched">At least one photo is required</span>
                 </div>                  
             </div>
