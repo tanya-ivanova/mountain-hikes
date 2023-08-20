@@ -43,8 +43,7 @@ export class CreatePostComponent {
         private errorService: ErrorService,
     ) { }
 
-    onFilesSelected(event: any) {
-        console.log(event.target?.files);
+    onFilesSelected(event: any) {       
 
         for (const file of event.target?.files) {
             const storageRef = ref(storage, file.name)

@@ -63,8 +63,7 @@ export class HikeDetailsComponent implements OnInit, OnDestroy {
 
     constructor(
         private weatherService: WeatherService,
-        private route: ActivatedRoute,
-        private router: Router,
+        private route: ActivatedRoute,        
         private authService: AuthService,
         private hikeService: HikeService,
         private errorService: ErrorService,

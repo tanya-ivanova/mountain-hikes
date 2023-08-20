@@ -37,8 +37,7 @@ export class GalleryComponent implements OnInit {
         private hikeService: HikeService,
     ) {}
 
-    ngOnInit() {
-        //this.post = this.route.snapshot.data['post'];
+    ngOnInit() {        
         this.postId = this.route.snapshot.params['id'];
 
         this.hikeService.getById(this.postId).subscribe((response) => {

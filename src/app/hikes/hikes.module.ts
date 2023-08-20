@@ -22,7 +22,6 @@ import { DeletePostComponent } from './delete-post/delete-post.component';
 import { HikesRoutingModule } from './hikes-routing.module';
 
 
-
 @NgModule({
   declarations: [
     AddCommentComponent,
