@@ -12,7 +12,7 @@ import { HikesModule } from './hikes/hikes.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
-import { ErrorInterceptor } from './error.interceptor';
+import { ErrorInterceptor } from './shared/error/error.interceptor';
 
 @NgModule({
     declarations: [
